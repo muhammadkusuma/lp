@@ -11,37 +11,31 @@
             @csrf
 
             <div>
-                <label class="font-bold">Nama Service</label>
-                <input type="text" name="name" class="w-full border px-2 py-1 win-border">
+                <label class="font-bold">Nama Internal</label>
+                <input type="text" name="name" class="w-full border px-2 py-1 win-border" placeholder="Contoh: web-dev-basic">
             </div>
 
             <div>
-                <label class="font-bold">Slug</label>
-                <input type="text" name="slug" class="w-full border px-2 py-1 win-border">
+                <label class="font-bold">Judul Tampilan</label>
+                <input type="text" name="title" class="w-full border px-2 py-1 win-border" placeholder="Contoh: Web Development Basic">
             </div>
 
             <div>
-                <label class="font-bold">Harga</label>
-                <input type="number" name="price" class="w-full border px-2 py-1 win-border">
-            </div>
-
-            <div>
-                <label class="font-bold">Unit</label>
-                <input type="text" name="unit" placeholder="project / jam / bulan"
-                    class="w-full border px-2 py-1 win-border">
+                <label class="font-bold">Harga Mulai (Rp)</label>
+                <input type="number" name="price_start" class="w-full border px-2 py-1 win-border">
             </div>
 
             <div>
                 <label class="font-bold">Status</label>
-                <select name="is_active" class="w-full border px-2 py-1 win-border">
-                    <option value="1">Active</option>
-                    <option value="0">Inactive</option>
+                <select name="status" class="w-full border px-2 py-1 win-border">
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
                 </select>
             </div>
 
             <div class="col-span-2">
                 <label class="font-bold">Deskripsi</label>
-                <textarea name="description" rows="3" class="w-full border px-2 py-1 win-border"></textarea>
+                <textarea name="description" rows="5" class="w-full border px-2 py-1 win-border"></textarea>
             </div>
 
             <div class="col-span-2 mt-2">

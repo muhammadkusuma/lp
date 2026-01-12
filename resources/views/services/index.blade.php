@@ -18,9 +18,9 @@
                 <thead class="bg-blue-200 text-blue-900">
                     <tr>
                         <th class="border px-2 py-1 w-12">#</th>
-                        <th class="border px-2 py-1">Nama Service</th>
-                        <th class="border px-2 py-1">Harga</th>
-                        <th class="border px-2 py-1">Unit</th>
+                        <th class="border px-2 py-1">Nama (Internal)</th>
+                        <th class="border px-2 py-1">Judul Tampilan</th>
+                        <th class="border px-2 py-1">Harga Mulai</th>
                         <th class="border px-2 py-1">Status</th>
                         <th class="border px-2 py-1 w-32">Aksi</th>
                     </tr>
@@ -30,15 +30,15 @@
                         <tr class="hover:bg-blue-100">
                             <td class="border px-2 py-1 text-center">{{ $i + 1 }}</td>
                             <td class="border px-2 py-1 font-bold">{{ $service->name }}</td>
+                            <td class="border px-2 py-1">{{ $service->title }}</td>
                             <td class="border px-2 py-1">
-                                {{ $service->price ? 'Rp ' . number_format($service->price, 0, ',', '.') : '-' }}
+                                {{ $service->price_start ? 'Rp ' . number_format($service->price_start, 0, ',', '.') : '-' }}
                             </td>
-                            <td class="border px-2 py-1">{{ $service->unit ?? '-' }}</td>
                             <td class="border px-2 py-1 text-center">
                                 <span
                                     class="px-2 py-0.5 text-xs win-border
-                            {{ $service->is_active ? 'bg-green-200' : 'bg-red-200' }}">
-                                    {{ $service->is_active ? 'Active' : 'Inactive' }}
+                            {{ $service->status === 'active' ? 'bg-green-200' : 'bg-red-200' }}">
+                                    {{ ucfirst($service->status) }}
                                 </span>
                             </td>
                             <td class="border px-2 py-1 text-center">

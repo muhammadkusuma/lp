@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Service;
@@ -8,6 +9,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
+        // Mengurutkan berdasarkan 'name' sesuai kolom yang ada
         $services = Service::orderBy('name')->get();
         return view('services.index', compact('services'));
     }
@@ -20,12 +22,11 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'        => 'required|string|max:150',
-            'slug'        => 'required|string|max:150|unique:services,slug',
-            'price'       => 'nullable|numeric',
-            'unit'        => 'nullable|string|max:50',
-            'is_active'   => 'required|boolean',
-            'description' => 'nullable|string',
+            'name'        => 'required|string|max:255',
+            'title'       => 'required|string|max:255',
+            'description' => 'required|string',
+            'price_start' => 'nullable|numeric',
+            'status'      => 'required|in:active,inactive',
         ]);
 
         Service::create($request->all());
@@ -43,12 +44,11 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service)
     {
         $request->validate([
-            'name'        => 'required|string|max:150',
-            'slug'        => 'required|string|max:150|unique:services,slug,' . $service->id,
-            'price'       => 'nullable|numeric',
-            'unit'        => 'nullable|string|max:50',
-            'is_active'   => 'required|boolean',
-            'description' => 'nullable|string',
+            'name'        => 'required|string|max:255',
+            'title'       => 'required|string|max:255',
+            'description' => 'required|string',
+            'price_start' => 'nullable|numeric',
+            'status'      => 'required|in:active,inactive',
         ]);
 
         $service->update($request->all());
