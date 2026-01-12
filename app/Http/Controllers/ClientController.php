@@ -8,7 +8,8 @@ class ClientController extends Controller
 {
     public function index()
     {
-        $clients = Client::orderBy('id')->get();
+        // Mengurutkan berdasarkan waktu pembuatan terbaru
+        $clients = Client::latest()->get();
 
         return view('clients.index', compact('clients'));
     }
@@ -21,8 +22,11 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'  => 'required',
-            'email' => 'nullable|email',
+            'contact_name' => 'required|string|max:255',
+            'company_name' => 'required|string|max:255',
+            'email'        => 'required|email|max:255',
+            'phone'        => 'nullable|string|max:20',
+            'address'      => 'nullable|string',
         ]);
 
         Client::create($request->all());
@@ -39,8 +43,11 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $request->validate([
-            'name'  => 'required',
-            'email' => 'nullable|email',
+            'contact_name' => 'required|string|max:255',
+            'company_name' => 'required|string|max:255',
+            'email'        => 'required|email|max:255',
+            'phone'        => 'nullable|string|max:20',
+            'address'      => 'nullable|string',
         ]);
 
         $client->update($request->all());
