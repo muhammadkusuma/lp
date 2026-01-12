@@ -48,9 +48,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('roles', RoleController::class)->except(['show']);
     Route::resource('services', ServiceController::class)->except(['show']);
     Route::resource('clients', ClientController::class);
+    Route::resource('projects', \App\Http\Controllers\ProjectController::class);
 
     // Placeholder Routes (Sebaiknya nanti dibuatkan Controllernya)
-    Route::get('/projects.index', function () { return "projects.index"; })->name('projects.index');
     Route::get('/invoices.index', function () { return "invoices.index"; })->name('invoices.index');
     Route::get('/payments.index', function () { return "payments.index"; })->name('payments.index');
     Route::get('/reports.finance', function () { return "reports.finance"; })->name('reports.finance');
