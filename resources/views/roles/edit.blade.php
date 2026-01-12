@@ -7,7 +7,7 @@
 
         <h2 class="font-bold text-blue-900 mb-3">✏️ Edit Role</h2>
 
-        <form method="POST" action="{{ route('roles.update', $role) }}" class="grid grid-cols-2 gap-4 text-sm">
+        <form method="POST" action="{{ route('roles.update', $role) }}" class="grid grid-cols-1 gap-4 text-sm">
             @csrf
             @method('PUT')
 
@@ -16,13 +16,7 @@
                 <input type="text" name="name" value="{{ $role->name }}" class="w-full border px-2 py-1 win-border">
             </div>
 
-            <div>
-                <label class="font-bold">Deskripsi</label>
-                <input type="text" name="description" value="{{ $role->description }}"
-                    class="w-full border px-2 py-1 win-border">
-            </div>
-
-            <div class="col-span-2 mt-2">
+            <div class="mt-2">
                 <button class="bg-blue-700 text-white px-4 py-1 win-border">
                     💾 Update
                 </button>

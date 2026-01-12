@@ -19,7 +19,6 @@
                     <tr>
                         <th class="border px-2 py-1 w-12">#</th>
                         <th class="border px-2 py-1">Nama Role</th>
-                        <th class="border px-2 py-1">Deskripsi</th>
                         <th class="border px-2 py-1 w-32">Aksi</th>
                     </tr>
                 </thead>
@@ -28,7 +27,6 @@
                         <tr class="hover:bg-blue-100">
                             <td class="border px-2 py-1 text-center">{{ $i + 1 }}</td>
                             <td class="border px-2 py-1 font-bold">{{ $role->name }}</td>
-                            <td class="border px-2 py-1">{{ $role->description }}</td>
                             <td class="border px-2 py-1 text-center">
                                 <a href="{{ route('roles.edit', $role) }}" class="text-blue-700">✏️</a>
 
@@ -44,7 +42,7 @@
 
                     @if ($roles->count() === 0)
                         <tr>
-                            <td colspan="4" class="border px-2 py-3 text-center text-gray-500">
+                            <td colspan="3" class="border px-2 py-3 text-center text-gray-500">
                                 Belum ada role
                             </td>
                         </tr>

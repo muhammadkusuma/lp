@@ -21,11 +21,10 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'        => 'required|string|max:50|unique:roles,name',
-            'description' => 'nullable|string|max:255',
+            'name' => 'required|string|max:50|unique:roles,name',
         ]);
 
-        Role::create($request->all());
+        Role::create($request->only('name'));
 
         return redirect()
             ->route('roles.index')
@@ -40,11 +39,10 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
         $request->validate([
-            'name'        => 'required|string|max:50|unique:roles,name,' . $role->id,
-            'description' => 'nullable|string|max:255',
+            'name' => 'required|string|max:50|unique:roles,name,' . $role->id,
         ]);
 
-        $role->update($request->all());
+        $role->update($request->only('name'));
 
         return redirect()
             ->route('roles.index')
