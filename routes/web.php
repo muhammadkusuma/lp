@@ -7,10 +7,22 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Menampilkan form login
+Route::get('/', [AuthController::class, 'showLoginForm'])->name('login'); // Bisa diakses via '/' atau '/login'
+Route::get('/login', [AuthController::class, 'showLoginForm']);
+
+// Memproses submit login
+Route::post('/login', [AuthController::class, 'login']);
+
+// Proses logout
+// (Menggunakan GET agar tombol <a> di dashboard.blade.php berfungsi langsung)
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Route::get('/', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 Route::middleware(['web'])->group(function () {
     Route::get('/company/profile', [CompanyProfileController::class, 'index'])
