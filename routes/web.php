@@ -18,16 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 // --- AUTHENTICATION ROUTES ---
 
-// 1. Halaman Root (Redirect ke login atau tampilkan form)
+// Halaman Root -> Login Form
 Route::get('/', [AuthController::class, 'showLoginForm']);
 
-// 2. Halaman Login (Berikan nama 'login' di sini agar route('login') mengarah ke /login)
+// Halaman Login (Nama route 'login' penting untuk redirect middleware)
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
-// 3. Proses Submit Login (POST)
+// Proses Login (POST)
 Route::post('/login', [AuthController::class, 'login']);
 
-// 4. Logout
+// Logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
