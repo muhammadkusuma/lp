@@ -5,12 +5,14 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::with('role')->orderBy('name')->get();
+        // Menggunakan paginate(10) agar tidak meload semua data sekaligus
+        $users = User::with('role')->orderBy('name')->paginate(10);
         return view('users.index', compact('users'));
     }
 
@@ -23,10 +25,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'     => 'required|string|max:100',
-            'email'    => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|email|max:255|unique:users',
+            'password' => 'required|string|min:6',
             'role_id'  => 'required|exists:roles,id',
+            'status'   => 'required|in:active,inactive',
         ]);
 
         User::create([
@@ -34,7 +37,7 @@ class UserController extends Controller
             'email'    => $request->email,
             'password' => Hash::make($request->password),
             'role_id'  => $request->role_id,
-            'status'   => 'active',
+            'status'   => $request->status,
         ]);
 
         return redirect()->route('users.index')
@@ -50,15 +53,17 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name'    => 'required|string|max:100',
-            'email'   => 'required|email|unique:users,email,' . $user->id,
+            'name'    => 'required|string|max:255',
+            // Menggunakan Rule::unique untuk mengabaikan email milik user yang sedang diedit (support UUID)
+            'email'   => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'role_id' => 'required|exists:roles,id',
-            'status'  => 'required',
+            'status'  => 'required|in:active,inactive',
         ]);
 
         $data = $request->only(['name', 'email', 'role_id', 'status']);
 
         if ($request->filled('password')) {
+            $request->validate(['password' => 'min:6']);
             $data['password'] = Hash::make($request->password);
         }
 

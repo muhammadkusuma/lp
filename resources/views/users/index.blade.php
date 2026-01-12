@@ -7,50 +7,56 @@
 
         <div class="flex items-center justify-between mb-3">
             <h2 class="font-bold text-blue-900">👥 Users & Roles</h2>
-            <a href="{{ route('users.create') }}" class="bg-green-700 text-white px-3 py-1 win-border">
+            <a href="{{ route('users.create') }}" class="bg-green-700 text-white px-3 py-1 win-border hover:bg-green-600 transition">
                 ➕ Tambah User
             </a>
         </div>
 
-        <div class="flex-1 overflow-auto win-border bg-white">
+        <div class="flex-1 overflow-auto win-border bg-white p-2">
             <table class="w-full text-sm border-collapse">
-                <thead class="bg-blue-200 text-blue-900">
+                <thead class="bg-blue-200 text-blue-900 sticky top-0">
                     <tr>
-                        <th class="border px-2 py-1">Nama</th>
-                        <th class="border px-2 py-1">Email</th>
-                        <th class="border px-2 py-1">Role</th>
-                        <th class="border px-2 py-1">Status</th>
-                        <th class="border px-2 py-1 w-32">Aksi</th>
+                        <th class="border px-2 py-1 text-left">Nama</th>
+                        <th class="border px-2 py-1 text-left">Email</th>
+                        <th class="border px-2 py-1 text-left">Role</th>
+                        <th class="border px-2 py-1 text-center">Status</th>
+                        <th class="border px-2 py-1 w-32 text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $user)
-                        <tr class="hover:bg-blue-100">
+                    @forelse ($users as $user)
+                        <tr class="hover:bg-blue-50">
                             <td class="border px-2 py-1">{{ $user->name }}</td>
                             <td class="border px-2 py-1">{{ $user->email }}</td>
                             <td class="border px-2 py-1">{{ $user->role->name ?? '-' }}</td>
-                            <td class="border px-2 py-1">
-                                <span
-                                    class="px-2 py-0.5 text-xs win-border
-                            {{ $user->status === 'active' ? 'bg-green-200' : 'bg-red-200' }}">
+                            <td class="border px-2 py-1 text-center">
+                                <span class="px-2 py-0.5 text-xs rounded-full border 
+                                    {{ $user->status === 'active' ? 'bg-green-100 text-green-800 border-green-200' : 'bg-red-100 text-red-800 border-red-200' }}">
                                     {{ ucfirst($user->status) }}
                                 </span>
                             </td>
                             <td class="border px-2 py-1 text-center">
-                                <a href="{{ route('users.edit', $user) }}" class="text-blue-700">✏️</a>
+                                <a href="{{ route('users.edit', $user) }}" class="text-blue-700 hover:text-blue-900 mx-1" title="Edit">✏️</a>
 
                                 <form action="{{ route('users.destroy', $user) }}" method="POST" class="inline"
-                                    onsubmit="return confirm('Hapus user ini?')">
+                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="text-red-700 ml-2">🗑️</button>
+                                    <button class="text-red-700 hover:text-red-900 mx-1" title="Hapus">🗑️</button>
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="5" class="border px-2 py-4 text-center text-gray-500">Belum ada data user.</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
+            
+            <div class="mt-4">
+                {{ $users->links() }}
+            </div>
         </div>
-
     </div>
 @endsection
