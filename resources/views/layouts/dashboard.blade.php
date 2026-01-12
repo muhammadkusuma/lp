@@ -104,8 +104,31 @@
         <a href="{{ route('logout') }}" class="menu-item text-red-300">Logout</a>
     </div>
 
-    {{-- CONTENT --}}
+    {{-- CONTENT WRAPPER --}}
     <div class="p-4">
+
+        {{-- FLASH MESSAGE NOTIFICATION --}}
+        @if(session('success'))
+            <div class="mb-4 bg-green-100 text-green-800 px-4 py-2 win-border flex items-center gap-2">
+                <span>✅</span>
+                <div>
+                    <strong class="font-bold">Berhasil!</strong>
+                    <span class="text-sm">{{ session('success') }}</span>
+                </div>
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="mb-4 bg-red-100 text-red-800 px-4 py-2 win-border flex items-center gap-2">
+                <span>❌</span>
+                <div>
+                    <strong class="font-bold">Gagal!</strong>
+                    <span class="text-sm">{{ session('error') }}</span>
+                </div>
+            </div>
+        @endif
+
+        {{-- MAIN CONTENT --}}
         <div class="bg-white win-border p-3">
             @yield('content')
         </div>

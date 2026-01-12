@@ -13,23 +13,6 @@
             </p>
         </div>
 
-        {{-- Tampilkan Pesan Sukses/Error --}}
-        @if(session('success'))
-            <div class="bg-green-100 text-green-700 p-2 mb-3 text-sm rounded border border-green-200">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        @if($errors->any())
-            <div class="bg-red-100 text-red-700 p-2 mb-3 text-sm rounded border border-red-200">
-                <ul class="list-disc pl-4">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
         {{-- Form --}}
         {{-- PENTING: enctype="multipart/form-data" diperlukan untuk upload file --}}
         <form method="POST" action="{{ route('company.profile.update') }}" enctype="multipart/form-data" class="flex-1 flex flex-col">
