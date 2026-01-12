@@ -9,6 +9,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController; // Pastikan ini ada
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,9 +50,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('clients', ClientController::class);
     Route::resource('projects', \App\Http\Controllers\ProjectController::class);
     Route::resource('invoices', \App\Http\Controllers\InvoiceController::class);
+    Route::resource('payments', PaymentController::class);
 
     // Placeholder Routes (Sebaiknya nanti dibuatkan Controllernya)
-    Route::get('/payments.index', function () {return "payments.index";})->name('payments.index');
     Route::get('/reports.finance', function () {return "reports.finance";})->name('reports.finance');
 
     Route::get('/posts.index', function () {return "posts.index";})->name('posts.index');

@@ -36,12 +36,15 @@
                 {{-- Client --}}
                 <div>
                     <label class="block text-sm font-bold mb-1">Client <span class="text-red-500">*</span></label>
-                    <select name="client_id"
-                        class="w-full border px-2 py-1 bg-white focus:outline-none focus:border-blue-500" required>
-                        <option value="">-- Pilih Client --</option>
-                        @foreach ($clients as $client)
-                            <option value="{{ $client->id }}" {{ old('client_id') == $client->id ? 'selected' : '' }}>
-                                {{ $client->company_name }} ({{ $client->contact_name }})
+                    <select name="invoice_id"
+                        class="w-full border border-gray-400 p-2 focus:outline-none focus:border-blue-600 bg-white">
+                        <option value="">-- Pilih Invoice --</option>
+                        @foreach ($invoices as $invoice)
+                            <option value="{{ $invoice->id }}">
+                                {{-- PERBAIKAN DI SINI: ganti ->name menjadi ->company_name --}}
+                                #{{ $invoice->invoice_number }} -
+                                {{ $invoice->client->company_name ?? ($invoice->client->contact_name ?? 'No Client') }}
+                                (Sisa: Rp {{ number_format($invoice->total, 0, ',', '.') }})
                             </option>
                         @endforeach
                     </select>

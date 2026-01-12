@@ -10,8 +10,8 @@ class Client extends Model
     use HasUuids, SoftDeletes;
 
     protected $fillable = [
-        'company_name',
-        'contact_name',
+        'company_name', // Gunakan ini
+        'contact_name', // Atau ini
         'email',
         'phone',
         'address',
