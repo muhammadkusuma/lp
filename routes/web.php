@@ -1,13 +1,13 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyLegalController;
 use App\Http\Controllers\CompanyProfileController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController; // Pastikan ini ada
+use App\Http\Controllers\UserController; // Pastikan ini ada
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,10 +30,9 @@ Route::post('/login', [AuthController::class, 'login']);
 // Logout
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
 // --- PROTECTED ROUTES (Hanya bisa diakses setelah login) ---
 Route::middleware(['auth'])->group(function () {
-    
+
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -49,18 +48,18 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('services', ServiceController::class)->except(['show']);
     Route::resource('clients', ClientController::class);
     Route::resource('projects', \App\Http\Controllers\ProjectController::class);
+    Route::resource('invoices', \App\Http\Controllers\InvoiceController::class);
 
     // Placeholder Routes (Sebaiknya nanti dibuatkan Controllernya)
-    Route::get('/invoices.index', function () { return "invoices.index"; })->name('invoices.index');
-    Route::get('/payments.index', function () { return "payments.index"; })->name('payments.index');
-    Route::get('/reports.finance', function () { return "reports.finance"; })->name('reports.finance');
-    
-    Route::get('/posts.index', function () { return "posts.index"; })->name('posts.index');
-    Route::get('/categories.index', function () { return "categories.index"; })->name('categories.index');
-    Route::get('/portfolios.index', function () { return "portfolios.index"; })->name('portfolios.index');
-    Route::get('/testimonials.index', function () { return "testimonials.index"; })->name('testimonials.index');
-    
-    Route::get('/leads.index', function () { return "leads.index"; })->name('leads.index');
-    Route::get('/contacts.index', function () { return "contacts.index"; })->name('contacts.index');
-    Route::get('/settings.index', function () { return "settings.index"; })->name('settings.index');
+    Route::get('/payments.index', function () {return "payments.index";})->name('payments.index');
+    Route::get('/reports.finance', function () {return "reports.finance";})->name('reports.finance');
+
+    Route::get('/posts.index', function () {return "posts.index";})->name('posts.index');
+    Route::get('/categories.index', function () {return "categories.index";})->name('categories.index');
+    Route::get('/portfolios.index', function () {return "portfolios.index";})->name('portfolios.index');
+    Route::get('/testimonials.index', function () {return "testimonials.index";})->name('testimonials.index');
+
+    Route::get('/leads.index', function () {return "leads.index";})->name('leads.index');
+    Route::get('/contacts.index', function () {return "contacts.index";})->name('contacts.index');
+    Route::get('/settings.index', function () {return "settings.index";})->name('settings.index');
 });
