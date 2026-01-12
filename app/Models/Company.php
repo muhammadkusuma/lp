@@ -2,27 +2,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
 
 class Company extends Model
 {
-    use SoftDeletes;
+    protected $table = 'companies';
 
     protected $fillable = [
-        'name', 'legal_name', 'logo_url', 'address', 'phone', 'email', 'website', 'description',
+        'name',
+        'legal_name',
+        'email',
+        'phone',
+        'website',
+        'logo_url',
+        'address',
+        'description',
     ];
-
-    protected $keyType   = 'string';
-    public $incrementing = false;
-
-    protected static function booted()
-    {
-        static::creating(fn($model) => $model->id = (string) Str::uuid());
-    }
-
-    public function legal()
-    {
-        return $this->hasOne(CompanyLegal::class);
-    }
 }
