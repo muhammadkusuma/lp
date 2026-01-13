@@ -1,13 +1,14 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyLegalController;
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\ReportController; // Pastikan ini ada
+use App\Http\Controllers\PostController; // Pastikan ini ada
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
@@ -55,9 +56,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('payments', PaymentController::class);
     Route::get('/reports/finance', [ReportController::class, 'finance'])->name('reports.finance');
     Route::resource('posts', PostController::class);
+    Route::resource('categories', CategoryController::class);
 
     // Placeholder Routes (Sebaiknya nanti dibuatkan Controllernya)
-    Route::get('/categories.index', function () {return "categories.index";})->name('categories.index');
     Route::get('/portfolios.index', function () {return "portfolios.index";})->name('portfolios.index');
     Route::get('/testimonials.index', function () {return "testimonials.index";})->name('testimonials.index');
 
