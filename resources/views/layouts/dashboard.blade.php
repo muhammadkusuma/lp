@@ -66,7 +66,7 @@
     </div>
 
     {{-- TOP NAVIGATION (SESUAI DATABASE & MODUL) --}}
-    <div class="bg-blue-900 text-white flex flex-wrap win-border">
+    <div class="bg-blue-900 text-white flex flex-wrap items-center win-border">
 
         {{-- CORE --}}
         <a href="{{ route('dashboard') }}" class="menu-item">Dashboard</a>
@@ -101,14 +101,20 @@
 
         {{-- SYSTEM --}}
         <a href="{{ route('settings.index') }}" class="menu-item">Settings</a>
-        <a href="{{ route('logout') }}" class="menu-item text-red-300">Logout</a>
+
+        {{-- LOGOUT (KANAN & MERAH) --}}
+        <a href="{{ route('logout') }}"
+            class="menu-item ml-auto bg-red-600 hover:bg-red-700 text-white font-semibold rounded">
+            Logout
+        </a>
     </div>
+
 
     {{-- CONTENT WRAPPER --}}
     <div class="p-4">
 
         {{-- FLASH MESSAGE NOTIFICATION --}}
-        @if(session('success'))
+        @if (session('success'))
             <div class="mb-4 bg-green-100 text-green-800 px-4 py-2 win-border flex items-center gap-2">
                 <span>✅</span>
                 <div>
@@ -118,7 +124,7 @@
             </div>
         @endif
 
-        @if(session('error'))
+        @if (session('error'))
             <div class="mb-4 bg-red-100 text-red-800 px-4 py-2 win-border flex items-center gap-2">
                 <span>❌</span>
                 <div>
