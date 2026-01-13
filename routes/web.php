@@ -17,6 +17,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LandingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 // --- AUTHENTICATION ROUTES ---
+// Route untuk Halaman Depan
+Route::get('/', [LandingController::class, 'index'])->name('home');
 
-// Halaman Root -> Login Form
-Route::get('/', [AuthController::class, 'showLoginForm']);
+// Route untuk Submit Contact Form (Masuk ke tabel Leads/Contacts)
+Route::post('/contact-submit', [LandingController::class, 'storeLead'])->name('contact.submit');
+
+// // Halaman Root -> Login Form
+// Route::get('/', [AuthController::class, 'showLoginForm']);
 
 // Halaman Login (Nama route 'login' penting untuk redirect middleware)
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
