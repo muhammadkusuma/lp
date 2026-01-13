@@ -6,6 +6,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyLegalController;
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LeadController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PostController;
@@ -61,10 +62,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('portfolios', PortfolioController::class);
     Route::resource('testimonials', TestimonialController::class);
+    Route::resource('leads', LeadController::class);
 
     // Placeholder Routes (Sebaiknya nanti dibuatkan Controllernya)
-
-    Route::get('/leads.index', function () {return "leads.index";})->name('leads.index');
     Route::get('/contacts.index', function () {return "contacts.index";})->name('contacts.index');
     Route::get('/settings.index', function () {return "settings.index";})->name('settings.index');
 });
