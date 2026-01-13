@@ -63,8 +63,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('portfolios', PortfolioController::class);
     Route::resource('testimonials', TestimonialController::class);
     Route::resource('leads', LeadController::class);
+    Route::resource('contacts', App\Http\Controllers\ContactController::class)->only(['index', 'show', 'destroy']);
 
     // Placeholder Routes (Sebaiknya nanti dibuatkan Controllernya)
-    Route::get('/contacts.index', function () {return "contacts.index";})->name('contacts.index');
     Route::get('/settings.index', function () {return "settings.index";})->name('settings.index');
 });
