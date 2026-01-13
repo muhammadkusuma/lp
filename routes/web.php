@@ -13,6 +13,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -64,7 +65,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('testimonials', TestimonialController::class);
     Route::resource('leads', LeadController::class);
     Route::resource('contacts', App\Http\Controllers\ContactController::class)->only(['index', 'show', 'destroy']);
+    // Menggunakan name 'settings.index' agar sesuai dengan menu di layout dashboard
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
 
-    // Placeholder Routes (Sebaiknya nanti dibuatkan Controllernya)
-    Route::get('/settings.index', function () {return "settings.index";})->name('settings.index');
+    // Route untuk update (POST/PUT)
+    Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update');
 });
