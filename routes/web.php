@@ -5,11 +5,12 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyLegalController;
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\UserController; // Pastikan ini ada
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\RoleController; // Pastikan ini ada
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,9 +52,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('projects', \App\Http\Controllers\ProjectController::class);
     Route::resource('invoices', \App\Http\Controllers\InvoiceController::class);
     Route::resource('payments', PaymentController::class);
+    Route::get('/reports/finance', [ReportController::class, 'finance'])->name('reports.finance');
 
     // Placeholder Routes (Sebaiknya nanti dibuatkan Controllernya)
-    Route::get('/reports.finance', function () {return "reports.finance";})->name('reports.finance');
 
     Route::get('/posts.index', function () {return "posts.index";})->name('posts.index');
     Route::get('/categories.index', function () {return "categories.index";})->name('categories.index');
