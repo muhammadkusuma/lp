@@ -1,0 +1,120 @@
+## A. Perbaikan & Penamaan Fitur (Lebih Profesional)
+
+### 1. Manajemen Template Dokumen
+
+* Template Surat Resmi
+* Template Perjanjian & Kontrak
+* Template Memo Internal
+* Template Dokumen Legal
+
+### 2. Manajemen Dokumen Perjanjian
+
+* Arsip Perjanjian Non-Profit / Kemitraan
+* Arsip Perjanjian Freelancer
+* Arsip Perjanjian Kontrak Karyawan (PKWT)
+* Riwayat Revisi & Versi Dokumen
+* Status Perjanjian (Aktif, Berakhir, Diperpanjang)
+
+### 3. Manajemen Dokumen Masuk & Keluar
+
+* Arsip Dokumen Masuk (Scan & Digital)
+* Arsip Dokumen Keluar (Scan & Digital)
+* Penomoran Otomatis Dokumen
+* Klasifikasi Dokumen (Legal, Keuangan, Operasional, dll)
+* Pencarian Dokumen (berdasarkan tanggal, jenis, kata kunci)
+
+### 4. Fitur Surat-Menyurat
+
+* Pembuatan Surat Digital
+* Pengiriman Surat Internal & Eksternal
+* Tanda Tangan Digital
+* Tracking Status Surat (Draft, Dikirim, Diterima)
+* Arsip Surat Otomatis
+
+---
+
+## B. Fitur Tambahan yang **Sangat Disarankan** untuk Operasional PT Perseorangan
+
+### 5. Manajemen Legal & Kepatuhan
+
+* Data Akta Pendirian & SK Kemenkumham
+* NPWP & NIB
+* Masa Berlaku Dokumen Legal
+* Reminder Perpanjangan Dokumen
+
+### 6. Manajemen SDM (Ringan tapi Penting)
+
+* Data Pemilik / Direktur
+* Data Freelancer & Karyawan Kontrak
+* Masa Berlaku Kontrak
+* Arsip Dokumen SDM
+
+### 7. Manajemen Keuangan Dasar
+
+* Arsip Invoice Masuk & Keluar
+* Arsip Bukti Pembayaran
+* Laporan Keuangan Sederhana
+* Integrasi Pajak (PPN / PPh – opsional)
+
+### 8. Sistem Hak Akses & Keamanan
+
+* Role & Permission (Owner, Admin, Staff)
+* Log Aktivitas Pengguna
+* Backup Otomatis Dokumen
+* Enkripsi File Penting
+
+### 9. Dashboard & Monitoring
+
+* Ringkasan Dokumen Aktif
+* Notifikasi Dokumen Hampir Kadaluarsa
+* Statistik Surat & Kontrak
+* Aktivitas Terakhir Sistem
+
+### 10. Integrasi & Otomasi (Opsional tapi Powerful)
+
+* Upload via Scanner / Mobile
+* Integrasi Email
+* Export PDF / Excel
+* API untuk integrasi sistem lain
+
+---
+
+## C. Struktur Modul Sederhana (Rekomendasi)
+
+```
+Dashboard
+├─ Dokumen
+│  ├─ Template
+│  ├─ Perjanjian
+│  ├─ Dokumen Masuk
+│  ├─ Dokumen Keluar
+│
+├─ Surat
+│
+├─ Legal & Kepatuhan
+│
+├─ SDM
+│
+├─ Keuangan
+│
+├─ Laporan
+│
+└─ Pengaturan Sistem
+```
+
+---
+
+## D. Catatan Penting untuk PT Perseroan Perorangan
+
+* Fokus pada **legal compliance & arsip digital**
+* Sistem **tidak perlu terlalu kompleks**, tapi **rapi & terdokumentasi**
+* Sangat cocok dijadikan **MVP internal** lalu dikembangkan bertahap
+
+Kalau mau, saya bisa bantu:
+
+* ✔️ Susun **PRD / kebutuhan sistem**
+* ✔️ Buat **database schema**
+* ✔️ Rancang **modul Laravel / React**
+* ✔️ Sesuaikan khusus untuk **PT Perseorangan berbasis digital**
+
+Tinggal bilang mau lanjut ke tahap mana 👍
