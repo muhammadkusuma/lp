@@ -98,6 +98,7 @@
 
         {{-- LEAD --}}
         <a href="{{ route('leads.index') }}" class="menu-item">Prospek Bisnis</a>
+        <a href="{{ route('contacts.index') }}" class="menu-item">Pesan Kontak</a>
 
         {{-- SYSTEM --}}
         <a href="{{ route('settings.index') }}" class="menu-item">Pengaturan</a>

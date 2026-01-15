@@ -128,6 +128,28 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #9ca3af;
         }
+
+        /* Success Alert Animation */
+        @keyframes bounce-in {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(-50px);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .animate-bounce-in {
+            animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
     </style>
 </head>
 
@@ -304,8 +326,21 @@
     <section id="contact" class="py-24 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             @if (session('success'))
-                <div class="mb-8 p-4 glass rounded-lg text-center text-green-700 font-semibold" data-aos="fade-down">
-                    <i class="fas fa-check-circle mr-2"></i> {{ session('success') }}
+                <div id="successAlert" class="mb-8 bg-gradient-to-r from-green-500 to-emerald-600 text-white p-6 rounded-2xl shadow-lg border-2 border-green-400 animate-bounce-in" data-aos="fade-down">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-green-600 text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Pesan Terkirim!</h4>
+                                <p class="text-sm text-white/90">{{ session('success') }}</p>
+                            </div>
+                        </div>
+                        <button onclick="document.getElementById('successAlert').remove()" class="text-white hover:text-gray-200 transition">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
                 </div>
             @endif
 
@@ -426,6 +461,30 @@
                 navbar.classList.add('glass');
             } else {
                 navbar.classList.remove('glass');
+            }
+        });
+
+        // Auto-dismiss success alert after 5 seconds
+        const successAlert = document.getElementById('successAlert');
+        if (successAlert) {
+            setTimeout(() => {
+                successAlert.style.opacity = '0';
+                successAlert.style.transform = 'translateY(-20px)';
+                successAlert.style.transition = 'all 0.5s ease';
+                setTimeout(() => {
+                    successAlert.remove();
+                }, 500);
+            }, 5000);
+        }
+
+        // Auto-scroll to contact section if hash is present
+        window.addEventListener('load', () => {
+            if (window.location.hash === '#contact') {
+                setTimeout(() => {
+                    document.querySelector('#contact').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }, 100);
             }
         });
     </script>

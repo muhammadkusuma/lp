@@ -5,6 +5,7 @@ use App\Http\Controllers\AgreementController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyLegalController;
 use App\Http\Controllers\CompanyProfileController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DocumentTemplateController;
@@ -78,6 +79,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('employees', EmployeeController::class);
     Route::post('employees/{employee}/documents', [EmployeeController::class, 'uploadDocument'])->name('employees.documents.upload');
     Route::delete('employees/{employee}/documents/{document}', [EmployeeController::class, 'deleteDocument'])->name('employees.documents.delete');
+
+    // Contacts (Pesan dari Landing Page)
+    Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+    Route::get('/contacts/{contact}', [ContactController::class, 'show'])->name('contacts.show');
+    Route::delete('/contacts/{contact}', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
     // Master Data Resources
     Route::resource('users', UserController::class);

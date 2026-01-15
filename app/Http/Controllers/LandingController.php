@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Contact;
 use App\Models\Lead;
 use App\Models\Project;
 use App\Models\Service;
@@ -36,7 +37,7 @@ class LandingController extends Controller
     }
 
     /**
-     * Store contact form submission as Lead
+     * Store contact form submission
      */
     public function storeLead(Request $request)
     {
@@ -51,15 +52,22 @@ class LandingController extends Controller
             'message.required' => 'Pesan wajib diisi',
         ]);
 
-        // Simpan ke tabel Leads (sesuai struktur: name, email, source, status)
+        // Simpan ke tabel Contacts
+        Contact::create([
+            'name'    => $validated['name'],
+            'email'   => $validated['email'],
+            'message' => $validated['message'],
+        ]);
+
+        // Juga simpan ke Leads untuk tracking
         Lead::create([
             'name'   => $validated['name'],
             'email'  => $validated['email'],
             'source' => 'Website Landing Page',
-            'status' => 'New',
+            'status' => 'new',
         ]);
 
-        return redirect()->route('home')->with('success', 'Terima kasih! Pesan Anda telah terkirim. Tim kami akan segera menghubungi Anda. 🚀');
+        return redirect()->route('home', '#contact')->with('success', 'Terima kasih! Pesan Anda telah terkirim. Tim kami akan segera menghubungi Anda.');
     }
 
     /**
