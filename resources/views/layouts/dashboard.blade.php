@@ -100,6 +100,10 @@
         <a href="{{ route('leads.index') }}" class="menu-item">Prospek Bisnis</a>
         <a href="{{ route('contacts.index') }}" class="menu-item">Pesan Kontak</a>
 
+        {{-- CONTENT --}}
+        <a href="{{ route('posts.index') }}" class="menu-item">Artikel / Blog</a>
+        <a href="{{ route('categories.index') }}" class="menu-item">Kategori Artikel</a>
+
         {{-- SYSTEM --}}
         <a href="{{ route('settings.index') }}" class="menu-item">Pengaturan</a>
 

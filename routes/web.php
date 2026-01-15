@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AgreementController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyLegalController;
 use App\Http\Controllers\CompanyProfileController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\LegalDocumentController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceController;
@@ -88,6 +90,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
     Route::get('/contacts/{contact}', [ContactController::class, 'show'])->name('contacts.show');
     Route::delete('/contacts/{contact}', [ContactController::class, 'destroy'])->name('contacts.destroy');
+
+    // Posts & Categories (Artikel/Blog)
+    Route::resource('posts', PostController::class);
+    Route::resource('categories', CategoryController::class)->except(['show']);
 
     // Master Data Resources
     Route::resource('users', UserController::class);
