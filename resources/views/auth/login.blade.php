@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - PT SOFTWARE HOUSE</title>
+    <title>Login - {{ $appSettings['site_name'] ?? 'Dashboard' }}</title>
 
     {{-- Tailwind CDN --}}
     <script src="https://cdn.tailwindcss.com"></script>
@@ -98,7 +98,7 @@
             <div class="p-6">
 
                 <div class="text-center mb-6">
-                    <h2 class="text-xl font-bold text-blue-900">PT SOFTWARE HOUSE</h2>
+                    <h2 class="text-xl font-bold text-blue-900">{{ $appSettings['site_name'] ?? 'PT Maju Bersama Teknologi' }}</h2>
                     <p class="text-xs text-gray-600">Silakan masuk untuk melanjutkan</p>
                 </div>
 
@@ -146,7 +146,7 @@
 
             {{-- Footer Kecil --}}
             <div class="bg-gray-200 px-4 py-2 text-xs text-gray-500 border-t border-white text-center">
-                &copy; {{ date('Y') }} PT Software House Internal System
+                &copy; {{ date('Y') }} {{ $appSettings['site_name'] ?? 'PT Maju Bersama Teknologi' }} - Internal System
             </div>
 
         </div>

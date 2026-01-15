@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title', 'Dashboard')</title>
+    <title>@yield('title', 'Dashboard') - {{ $appSettings['site_name'] ?? 'Dashboard' }}</title>
 
     {{-- Tailwind CDN --}}
     <script src="https://cdn.tailwindcss.com"></script>
@@ -55,7 +55,7 @@
     {{-- HEADER --}}
     <div class="win-header text-white px-4 py-3 flex justify-between items-center">
         <div>
-            <strong class="text-lg">PT SOFTWARE HOUSE</strong><br>
+            <strong class="text-lg">{{ $appSettings['site_name'] ?? 'PT Maju Bersama Teknologi' }}</strong><br>
             <span class="text-xs opacity-90">Dashboard Operasional Perusahaan</span>
         </div>
 
