@@ -30,6 +30,11 @@ use App\Http\Controllers\LandingController;
 // Route untuk Halaman Depan
 Route::get('/', [LandingController::class, 'index'])->name('home');
 
+// Route untuk Detail Pages
+Route::get('/services/{id}', [LandingController::class, 'showService'])->name('service.detail');
+Route::get('/portfolio/{id}', [LandingController::class, 'showPortfolio'])->name('portfolio.detail');
+Route::get('/about', [LandingController::class, 'about'])->name('about');
+
 // Route untuk Submit Contact Form (Masuk ke tabel Leads/Contacts)
 Route::post('/contact-submit', [LandingController::class, 'storeLead'])->name('contact.submit');
 

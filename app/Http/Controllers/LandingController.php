@@ -5,57 +5,122 @@ use App\Models\Company;
 use App\Models\Lead;
 use App\Models\Project;
 use App\Models\Service;
-use App\Models\Setting; // Atau CompanyProfile
-use App\Models\Testimonial;
-use Illuminate\Http\Request; // Menggunakan Lead untuk form contact
+use App\Models\Setting;
+use Illuminate\Http\Request;
 
 class LandingController extends Controller
 {
+    /**
+     * Display landing page
+     */
     public function index()
     {
-        // Mengambil data Company Profile (Asumsi ada 1 row utama)
+        // Mengambil data Company Profile
         $company = Company::first();
 
-        // Mengambil Layanan (Limit 6 agar layout rapi)
-        $services = Service::latest()->take(6)->get();
+        // Mengambil Layanan (Limit untuk tampilan landing)
+        $services = Service::where('status', 'active')->latest()->take(8)->get();
 
-        // Mengambil Portfolio/Project
-        $projects = Project::latest()->take(3)->get();
+        // Mengambil Portfolio/Project (Limit 6 untuk grid)
+        $projects = Project::latest()->take(6)->get();
 
-        // Mengambil Testimonial
-        $testimonials = Testimonial::latest()->get();
-
-        // Mengambil Settings (untuk No HP, Email, Alamat di footer/contact)
-        // Asumsi Setting menyimpan key-value pairs
-        $settings = Setting::pluck('value', 'key')->toArray();
+        // Mengambil Settings sebagai array key-value
+        $settings = $this->getSettings();
 
         return view('landing.index', compact(
             'company',
             'services',
             'projects',
-            'testimonials',
             'settings'
         ));
     }
 
+    /**
+     * Store contact form submission as Lead
+     */
     public function storeLead(Request $request)
     {
         $validated = $request->validate([
             'name'    => 'required|string|max:255',
             'email'   => 'required|email|max:255',
-            'subject' => 'nullable|string|max:255',
             'message' => 'required|string',
+        ], [
+            'name.required' => 'Nama wajib diisi',
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Format email tidak valid',
+            'message.required' => 'Pesan wajib diisi',
         ]);
 
-        // Simpan ke tabel Leads
+        // Simpan ke tabel Leads (sesuai struktur: name, email, source, status)
         Lead::create([
-            'name'    => $validated['name'],
-            'email'   => $validated['email'],
-            'subject' => $validated['subject'] ?? 'New Inquiry from Landing Page',
-            'message' => $validated['message'],
-            'status'  => 'new', // Default status
+            'name'   => $validated['name'],
+            'email'  => $validated['email'],
+            'source' => 'Website Landing Page',
+            'status' => 'New',
         ]);
 
-        return redirect()->route('home', '#contact')->with('success', 'Pesan Anda telah terkirim! Tim kami akan segera menghubungi Anda.');
+        return redirect()->route('home')->with('success', 'Terima kasih! Pesan Anda telah terkirim. Tim kami akan segera menghubungi Anda. 🚀');
+    }
+
+    /**
+     * Get settings as key-value array
+     */
+    private function getSettings()
+    {
+        $settingsArray = Setting::pluck('value', 'key')->toArray();
+
+        // Set default values jika tidak ada di database
+        return array_merge([
+            'site_name' => 'PT Maju Bersama Teknologi',
+            'site_description' => 'Solusi Teknologi Informasi Terpercaya',
+            'contact_email' => 'info@majubersamatek.co.id',
+            'contact_phone' => '021-5551234',
+            'address' => 'Jakarta, Indonesia',
+            'facebook_url' => '#',
+            'instagram_url' => '#',
+            'linkedin_url' => '#',
+        ], $settingsArray);
+    }
+
+    /**
+     * Show service detail page
+     */
+    public function showService($id)
+    {
+        $service = Service::findOrFail($id);
+        $settings = $this->getSettings();
+        $relatedServices = Service::where('status', 'active')
+            ->where('id', '!=', $id)
+            ->latest()
+            ->take(3)
+            ->get();
+
+        return view('landing.service-detail', compact('service', 'settings', 'relatedServices'));
+    }
+
+    /**
+     * Show portfolio/project detail page
+     */
+    public function showPortfolio($id)
+    {
+        $project = Project::findOrFail($id);
+        $settings = $this->getSettings();
+        $relatedProjects = Project::where('id', '!=', $id)
+            ->latest()
+            ->take(3)
+            ->get();
+
+        return view('landing.portfolio-detail', compact('project', 'settings', 'relatedProjects'));
+    }
+
+    /**
+     * Show about page
+     */
+    public function about()
+    {
+        $company = Company::first();
+        $settings = $this->getSettings();
+        
+        return view('landing.about', compact('company', 'settings'));
     }
 }
