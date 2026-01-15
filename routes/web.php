@@ -6,6 +6,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyLegalController;
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DocumentTemplateController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PortfolioController;
@@ -55,6 +56,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/company/profile', [CompanyProfileController::class, 'update'])->name('company.profile.update');
     Route::get('/company/legal', [CompanyLegalController::class, 'index'])->name('company.legal');
     Route::put('/company/legal', [CompanyLegalController::class, 'update'])->name('company.legal.update');
+
+    // Document Templates
+    Route::resource('document-templates', DocumentTemplateController::class)->except(['show']);
 
     // Master Data Resources
     Route::resource('users', UserController::class);
