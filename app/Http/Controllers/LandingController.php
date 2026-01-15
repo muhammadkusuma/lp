@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Models\Contact;
 use App\Models\Lead;
+use App\Models\Post;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\Setting;
@@ -25,6 +26,9 @@ class LandingController extends Controller
         // Mengambil Portfolio/Project (Limit 6 untuk grid)
         $projects = Project::latest()->take(6)->get();
 
+        // Mengambil Artikel/Blog (Limit 3 untuk landing)
+        $posts = Post::published()->latest('published_at')->take(3)->get();
+
         // Mengambil Settings sebagai array key-value
         $settings = $this->getSettings();
 
@@ -32,6 +36,7 @@ class LandingController extends Controller
             'company',
             'services',
             'projects',
+            'posts',
             'settings'
         ));
     }
@@ -130,5 +135,39 @@ class LandingController extends Controller
         $settings = $this->getSettings();
         
         return view('landing.about', compact('company', 'settings'));
+    }
+
+    /**
+     * Show blog index page
+     */
+    public function blogIndex()
+    {
+        $posts = Post::published()
+            ->latest('published_at')
+            ->paginate(9);
+        
+        $settings = $this->getSettings();
+        
+        return view('landing.blog-index', compact('posts', 'settings'));
+    }
+
+    /**
+     * Show blog detail page
+     */
+    public function blogDetail($slug)
+    {
+        $post = Post::where('slug', $slug)
+            ->published()
+            ->firstOrFail();
+        
+        $relatedPosts = Post::published()
+            ->where('id', '!=', $post->id)
+            ->latest('published_at')
+            ->take(3)
+            ->get();
+        
+        $settings = $this->getSettings();
+        
+        return view('landing.blog-detail', compact('post', 'relatedPosts', 'settings'));
     }
 }

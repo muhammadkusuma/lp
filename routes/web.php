@@ -36,6 +36,10 @@ Route::get('/services/{id}', [LandingController::class, 'showService'])->name('s
 Route::get('/portfolio/{id}', [LandingController::class, 'showPortfolio'])->name('portfolio.detail');
 Route::get('/about', [LandingController::class, 'about'])->name('about');
 
+// Route untuk Blog/Artikel
+Route::get('/blog', [LandingController::class, 'blogIndex'])->name('blog.index');
+Route::get('/blog/{slug}', [LandingController::class, 'blogDetail'])->name('blog.detail');
+
 // Route untuk Submit Contact Form (Masuk ke tabel Leads/Contacts)
 Route::post('/contact-submit', [LandingController::class, 'storeLead'])->name('contact.submit');
 

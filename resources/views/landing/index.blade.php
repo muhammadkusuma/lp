@@ -171,6 +171,7 @@
                     <a href="#home" class="text-gray-700 hover:text-purple-600 transition font-medium">Beranda</a>
                     <a href="#services" class="text-gray-700 hover:text-purple-600 transition font-medium">Layanan</a>
                     <a href="#portfolio" class="text-gray-700 hover:text-purple-600 transition font-medium">Portfolio</a>
+                    <a href="{{ route('blog.index') }}" class="text-gray-700 hover:text-purple-600 transition font-medium">Artikel</a>
                     <a href="{{ route('about') }}" class="text-gray-700 hover:text-purple-600 transition font-medium">Tentang</a>
                     <a href="#contact" class="btn-primary px-6 py-2.5 rounded-full text-white font-semibold transition">
                         Hubungi Kami 🚀
@@ -192,6 +193,7 @@
                 <a href="#home" class="block px-3 py-2 text-gray-800 hover:bg-white/20 rounded-md">Beranda</a>
                 <a href="#services" class="block px-3 py-2 text-gray-800 hover:bg-white/20 rounded-md">Layanan</a>
                 <a href="#portfolio" class="block px-3 py-2 text-gray-800 hover:bg-white/20 rounded-md">Portfolio</a>
+                <a href="{{ route('blog.index') }}" class="block px-3 py-2 text-gray-800 hover:bg-white/20 rounded-md">Artikel</a>
                 <a href="{{ route('about') }}" class="block px-3 py-2 text-gray-800 hover:bg-white/20 rounded-md">Tentang</a>
                 <a href="#contact" class="block px-3 py-2 text-purple-600 font-bold">Hubungi Kami</a>
             </div>
@@ -321,6 +323,56 @@
             </div>
         </div>
     </section>
+
+    <!-- Blog/Artikel Section -->
+    @if($posts->count() > 0)
+    <section id="blog" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 text-gray-800">
+                    Artikel & <span class="gradient-text">Berita</span>
+                </h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    Informasi terkini seputar teknologi, tips, dan insight dari tim kami
+                </p>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                @foreach($posts as $index => $post)
+                    <a href="{{ route('blog.detail', $post->slug) }}" class="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
+                        <div class="aspect-video bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center">
+                            <i class="fas fa-newspaper text-6xl text-purple-300"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                                <i class="fas fa-calendar"></i>
+                                <span>{{ $post->published_at->format('d M Y') }}</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-gray-800 group-hover:text-purple-600 transition line-clamp-2">
+                                {{ $post->title }}
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                                {{ Str::limit(strip_tags($post->content), 120) }}
+                            </p>
+                            <span class="text-purple-600 text-sm font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+                                Baca Selengkapnya <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+
+            <!-- View All Button -->
+            <div class="text-center mt-12" data-aos="fade-up">
+                <a href="{{ route('blog.index') }}" class="inline-block bg-white border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-full font-bold hover:bg-purple-600 hover:text-white transition">
+                    Lihat Semua Artikel <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    @endif
 
     <!-- Contact Section -->
     <section id="contact" class="py-24 relative">
