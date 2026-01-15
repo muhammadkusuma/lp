@@ -1,13 +1,13 @@
 ## A. Perbaikan & Penamaan Fitur (Lebih Profesional)
 
-### 1. Manajemen Template Dokumen (progress)
+### 1. Manajemen Template Dokumen 
 
 * Template Surat Resmi
 * Template Perjanjian & Kontrak
 * Template Memo Internal
 * Template Dokumen Legal
 
-### 2. Manajemen Dokumen Perjanjian
+### 2. Manajemen Dokumen Perjanjian 
 
 * Arsip Perjanjian Non-Profit / Kemitraan
 * Arsip Perjanjian Freelancer
@@ -15,7 +15,7 @@
 * Riwayat Revisi & Versi Dokumen
 * Status Perjanjian (Aktif, Berakhir, Diperpanjang)
 
-### 3. Manajemen Dokumen Masuk & Keluar
+### 3. Manajemen Dokumen Masuk & Keluar 
 
 * Arsip Dokumen Masuk (Scan & Digital)
 * Arsip Dokumen Keluar (Scan & Digital)
@@ -23,7 +23,7 @@
 * Klasifikasi Dokumen (Legal, Keuangan, Operasional, dll)
 * Pencarian Dokumen (berdasarkan tanggal, jenis, kata kunci)
 
-### 4. Fitur Surat-Menyurat
+### 4. Fitur Surat-Menyurat (pending)
 
 * Pembuatan Surat Digital
 * Pengiriman Surat Internal & Eksternal
@@ -35,21 +35,20 @@
 
 ## B. Fitur Tambahan yang **Sangat Disarankan** untuk Operasional PT Perseorangan
 
-### 5. Manajemen Legal & Kepatuhan
+### 5. Manajemen Legal & Kepatuhan 
 
 * Data Akta Pendirian & SK Kemenkumham
 * NPWP & NIB
 * Masa Berlaku Dokumen Legal
 * Reminder Perpanjangan Dokumen
 
-### 6. Manajemen SDM (Ringan tapi Penting)
-
+### 6. Manajemen SDM (Ringan tapi Penting) 
 * Data Pemilik / Direktur
 * Data Freelancer & Karyawan Kontrak
 * Masa Berlaku Kontrak
 * Arsip Dokumen SDM
 
-### 7. Manajemen Keuangan Dasar
+### 7. Manajemen Keuangan Dasar (progress)
 
 * Arsip Invoice Masuk & Keluar
 * Arsip Bukti Pembayaran

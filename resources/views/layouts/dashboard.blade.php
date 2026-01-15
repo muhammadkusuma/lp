@@ -75,6 +75,9 @@
         <a href="{{ route('company.profile') }}" class="menu-item">Company</a>
         <a href="{{ route('company.legal') }}" class="menu-item">Legal</a>
         <a href="{{ route('document-templates.index') }}" class="menu-item">Templates</a>
+        <a href="{{ route('agreements.index') }}" class="menu-item">Agreements</a>
+        <a href="{{ route('documents.index') }}" class="menu-item">Documents</a>
+        <a href="{{ route('legal-documents.index') }}" class="menu-item">Legal Docs</a>
 
         {{-- USER --}}
         <a href="{{ route('users.index') }}" class="menu-item">Users</a>

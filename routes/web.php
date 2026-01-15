@@ -1,13 +1,16 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AgreementController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyLegalController;
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DocumentTemplateController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\LegalDocumentController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PostController;
@@ -59,6 +62,15 @@ Route::middleware(['auth'])->group(function () {
 
     // Document Templates
     Route::resource('document-templates', DocumentTemplateController::class)->except(['show']);
+
+    // Agreements
+    Route::resource('agreements', AgreementController::class);
+
+    // Documents (Incoming & Outgoing)
+    Route::resource('documents', DocumentController::class);
+
+    // Legal Documents
+    Route::resource('legal-documents', LegalDocumentController::class);
 
     // Master Data Resources
     Route::resource('users', UserController::class);
