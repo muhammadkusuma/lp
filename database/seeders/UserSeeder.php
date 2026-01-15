@@ -12,23 +12,31 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        $adminRole = Role::where('name', 'Admin')->first();
-        $managerRole = Role::where('name', 'Manager')->first();
+        $adminRole = Role::where('name', 'Administrator')->first();
+        $managerRole = Role::where('name', 'Manajer')->first();
+        $staffRole = Role::where('name', 'Staff')->first();
         
         $users = [
             [
                 'id' => Str::uuid(),
-                'name' => 'Admin User',
+                'name' => 'Budi Santoso',
                 'email' => 'admin@company.com',
                 'password' => Hash::make('password'),
                 'role_id' => $adminRole?->id,
             ],
             [
                 'id' => Str::uuid(),
-                'name' => 'Manager User',
+                'name' => 'Siti Rahayu',
                 'email' => 'manager@company.com',
                 'password' => Hash::make('password'),
                 'role_id' => $managerRole?->id,
+            ],
+            [
+                'id' => Str::uuid(),
+                'name' => 'Ahmad Wijaya',
+                'email' => 'staff@company.com',
+                'password' => Hash::make('password'),
+                'role_id' => $staffRole?->id,
             ],
         ];
 

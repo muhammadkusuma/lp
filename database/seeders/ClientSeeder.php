@@ -12,28 +12,32 @@ class ClientSeeder extends Seeder
     {
         $clients = [
             [
-                'name' => 'PT Mitra Sejahtera',
-                'email' => 'contact@mitrasejahtera.com',
+                'company_name' => 'PT Mitra Sejahtera',
+                'contact_name' => 'Bambang Suryanto',
+                'email' => 'bambang@mitrasejahtera.com',
                 'phone' => '021-98765432',
-                'address' => 'Jl. Gatot Subroto No. 45, Jakarta',
-                'company' => 'PT Mitra Sejahtera',
-                'status' => 'active',
+                'address' => 'Jl. Gatot Subroto No. 45, Setiabudi, Jakarta Selatan',
             ],
             [
-                'name' => 'CV Teknologi Maju',
-                'email' => 'info@tekmaju.com',
+                'company_name' => 'CV Teknologi Maju',
+                'contact_name' => 'Dewi Lestari',
+                'email' => 'dewi@tekmaju.com',
                 'phone' => '021-87654321',
-                'address' => 'Jl. Thamrin No. 78, Jakarta',
-                'company' => 'CV Teknologi Maju',
-                'status' => 'active',
+                'address' => 'Jl. Thamrin No. 78, Menteng, Jakarta Pusat',
             ],
             [
-                'name' => 'Yayasan Pendidikan Maju Bersama',
-                'email' => 'contact@yayasan.org',
+                'company_name' => 'Yayasan Pendidikan Maju Bersama',
+                'contact_name' => 'Dr. Hendra Wijaya',
+                'email' => 'hendra@yayasan.org',
                 'phone' => '021-76543210',
-                'address' => 'Jl. Kuningan No. 90, Jakarta',
-                'company' => 'Yayasan Pendidikan Maju Bersama',
-                'status' => 'active',
+                'address' => 'Jl. Kuningan Raya No. 90, Kuningan, Jakarta Selatan',
+            ],
+            [
+                'company_name' => 'PT Berkah Sejahtera Indonesia',
+                'contact_name' => 'Rina Kusumawati',
+                'email' => 'rina@berkahsejahtera.co.id',
+                'phone' => '021-55512345',
+                'address' => 'Jl. Sudirman Kav. 52-53, Jakarta Selatan',
             ],
         ];
 

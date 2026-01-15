@@ -10,13 +10,13 @@ class CompanySeeder extends Seeder
     public function run(): void
     {
         Company::create([
-            'name' => 'PT Perseorangan Digital Solutions',
-            'legal_name' => 'PT Perseorangan Digital Solutions',
-            'address' => 'Jl. Sudirman No. 123, Jakarta Selatan 12190',
-            'phone' => '021-12345678',
-            'email' => 'info@ptperseorangan.com',
-            'website' => 'https://www.ptperseorangan.com',
-            'description' => 'Perusahaan yang bergerak di bidang solusi digital dan pengembangan software',
+            'name' => 'PT Maju Bersama Teknologi',
+            'legal_name' => 'PT Maju Bersama Teknologi',
+            'address' => 'Jl. Gatot Subroto No. 88, Kuningan, Jakarta Selatan 12710',
+            'phone' => '021-5551234',
+            'email' => 'info@majubersamatek.co.id',
+            'website' => 'https://www.majubersamatek.co.id',
+            'description' => 'Perusahaan yang bergerak di bidang solusi teknologi informasi, pengembangan software, dan konsultasi IT untuk berbagai industri di Indonesia',
         ]);
     }
 }

@@ -72,44 +72,40 @@
         <a href="{{ route('dashboard') }}" class="menu-item">Dashboard</a>
 
         {{-- COMPANY --}}
-        <a href="{{ route('company.profile') }}" class="menu-item">Company</a>
-        <a href="{{ route('company.legal') }}" class="menu-item">Legal</a>
-        <a href="{{ route('document-templates.index') }}" class="menu-item">Templates</a>
-        <a href="{{ route('agreements.index') }}" class="menu-item">Agreements</a>
-        <a href="{{ route('documents.index') }}" class="menu-item">Documents</a>
-        <a href="{{ route('legal-documents.index') }}" class="menu-item">Legal Docs</a>
+        <a href="{{ route('company.profile') }}" class="menu-item">Profil Perusahaan</a>
+        <a href="{{ route('company.legal') }}" class="menu-item">Legal Perusahaan</a>
+        <a href="{{ route('document-templates.index') }}" class="menu-item">Template Dokumen</a>
+        <a href="{{ route('agreements.index') }}" class="menu-item">Perjanjian</a>
+        <a href="{{ route('documents.index') }}" class="menu-item">Dokumen Masuk/Keluar</a>
+        <a href="{{ route('legal-documents.index') }}" class="menu-item">Dokumen Legal</a>
+
+        {{-- SDM --}}
+        <a href="{{ route('employees.index') }}" class="menu-item">Karyawan</a>
 
         {{-- USER --}}
-        <a href="{{ route('users.index') }}" class="menu-item">Users</a>
-        <a href="{{ route('roles.index') }}" class="menu-item">Roles</a>
+        <a href="{{ route('users.index') }}" class="menu-item">Pengguna</a>
+        <a href="{{ route('roles.index') }}" class="menu-item">Role</a>
 
         {{-- SERVICE & PROJECT --}}
-        <a href="{{ route('services.index') }}" class="menu-item">Services</a>
-        <a href="{{ route('clients.index') }}" class="menu-item">Clients</a>
-        <a href="{{ route('projects.index') }}" class="menu-item">Projects</a>
+        <a href="{{ route('services.index') }}" class="menu-item">Layanan</a>
+        <a href="{{ route('clients.index') }}" class="menu-item">Klien</a>
+        <a href="{{ route('projects.index') }}" class="menu-item">Proyek</a>
 
         {{-- FINANCE --}}
-        <a href="{{ route('invoices.index') }}" class="menu-item">Invoices</a>
-        <a href="{{ route('payments.index') }}" class="menu-item">Payments</a>
-        <a href="{{ route('reports.finance') }}" class="menu-item">Reports</a>
-
-        {{-- CONTENT --}}
-        <a href="{{ route('posts.index') }}" class="menu-item">Blog</a>
-        <a href="{{ route('categories.index') }}" class="menu-item">Categories</a>
-        <a href="{{ route('portfolios.index') }}" class="menu-item">Portfolio</a>
-        <a href="{{ route('testimonials.index') }}" class="menu-item">Testimonials</a>
+        <a href="{{ route('invoices.index') }}" class="menu-item">Invoice</a>
+        <a href="{{ route('payments.index') }}" class="menu-item">Pembayaran</a>
+        <a href="{{ route('reports.finance') }}" class="menu-item">Laporan Keuangan</a>
 
         {{-- LEAD --}}
-        <a href="{{ route('leads.index') }}" class="menu-item">Leads</a>
-        <a href="{{ route('contacts.index') }}" class="menu-item">Contacts</a>
+        <a href="{{ route('leads.index') }}" class="menu-item">Prospek Bisnis</a>
 
         {{-- SYSTEM --}}
-        <a href="{{ route('settings.index') }}" class="menu-item">Settings</a>
+        <a href="{{ route('settings.index') }}" class="menu-item">Pengaturan</a>
 
         {{-- LOGOUT (KANAN & MERAH) --}}
         <a href="{{ route('logout') }}"
             class="menu-item ml-auto bg-red-600 hover:bg-red-700 text-white font-semibold rounded">
-            Logout
+            Keluar
         </a>
     </div>
 

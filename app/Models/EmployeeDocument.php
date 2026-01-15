@@ -15,11 +15,13 @@ class EmployeeDocument extends Model
         'document_name',
         'file_path',
         'upload_date',
+        'expiry_date',
         'notes',
     ];
 
     protected $casts = [
         'upload_date' => 'date',
+        'expiry_date' => 'date',
     ];
 
     /**
@@ -61,4 +63,34 @@ class EmployeeDocument extends Model
             default => 'bg-gray-100',
         };
     }
+
+    /**
+     * Check if document is expiring soon (within 30 days)
+     */
+    public function isExpiringSoon(): bool
+    {
+        if (!$this->expiry_date) {
+            return false;
+        }
+
+        if ($this->expiry_date->isPast()) {
+            return false; // Already expired
+        }
+
+        $daysUntilExpiry = now()->diffInDays($this->expiry_date, false);
+        return $daysUntilExpiry <= 30 && $daysUntilExpiry >= 0;
+    }
+
+    /**
+     * Check if document has expired
+     */
+    public function isExpired(): bool
+    {
+        if (!$this->expiry_date) {
+            return false;
+        }
+
+        return $this->expiry_date->isPast();
+    }
 }
+

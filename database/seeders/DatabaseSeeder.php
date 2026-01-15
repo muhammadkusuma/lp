@@ -17,9 +17,12 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CompanySeeder::class,
             CompanyLegalSeeder::class,
+            SettingSeeder::class,
             
             // Business Data
             ServiceSeeder::class,
+            ClientSeeder::class,
+            LeadSeeder::class,
             
             // Document Management
             DocumentTemplateSeeder::class,

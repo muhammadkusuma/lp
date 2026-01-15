@@ -12,43 +12,35 @@ class SettingSeeder extends Seeder
         $settings = [
             [
                 'key' => 'site_name',
-                'value' => 'PT Perseorangan Digital Solutions',
-                'type' => 'text',
+                'value' => 'PT Maju Bersama Teknologi',
             ],
             [
                 'key' => 'site_description',
-                'value' => 'Solusi Digital Terpercaya untuk Bisnis Anda',
-                'type' => 'text',
+                'value' => 'Solusi Teknologi Informasi Terpercaya untuk Bisnis Indonesia',
             ],
             [
                 'key' => 'contact_email',
-                'value' => 'info@ptperseorangan.com',
-                'type' => 'email',
+                'value' => 'info@majubersamatek.co.id',
             ],
             [
                 'key' => 'contact_phone',
-                'value' => '021-12345678',
-                'type' => 'text',
+                'value' => '021-5551234',
             ],
             [
                 'key' => 'address',
-                'value' => 'Jl. Sudirman No. 123, Jakarta Selatan 12190',
-                'type' => 'textarea',
+                'value' => 'Jl. Gatot Subroto No. 88, Kuningan, Jakarta Selatan 12710',
             ],
             [
                 'key' => 'facebook_url',
-                'value' => 'https://facebook.com/ptperseorangan',
-                'type' => 'url',
+                'value' => 'https://facebook.com/majubersamatek',
             ],
             [
                 'key' => 'instagram_url',
-                'value' => 'https://instagram.com/ptperseorangan',
-                'type' => 'url',
+                'value' => 'https://instagram.com/majubersamatek',
             ],
             [
                 'key' => 'linkedin_url',
-                'value' => 'https://linkedin.com/company/ptperseorangan',
-                'type' => 'url',
+                'value' => 'https://linkedin.com/company/majubersamatek',
             ],
         ];
 

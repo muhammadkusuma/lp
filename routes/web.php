@@ -2,23 +2,20 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AgreementController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyLegalController;
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DocumentTemplateController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\LegalDocumentController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\PortfolioController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingsController;
-use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingController;
@@ -72,6 +69,11 @@ Route::middleware(['auth'])->group(function () {
     // Legal Documents
     Route::resource('legal-documents', LegalDocumentController::class);
 
+    // Employees (SDM)
+    Route::resource('employees', EmployeeController::class);
+    Route::post('employees/{employee}/documents', [EmployeeController::class, 'uploadDocument'])->name('employees.documents.upload');
+    Route::delete('employees/{employee}/documents/{document}', [EmployeeController::class, 'deleteDocument'])->name('employees.documents.delete');
+
     // Master Data Resources
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class)->except(['show']);
@@ -81,12 +83,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('invoices', \App\Http\Controllers\InvoiceController::class);
     Route::resource('payments', PaymentController::class);
     Route::get('/reports/finance', [ReportController::class, 'finance'])->name('reports.finance');
-    Route::resource('posts', PostController::class);
-    Route::resource('categories', CategoryController::class);
-    Route::resource('portfolios', PortfolioController::class);
-    Route::resource('testimonials', TestimonialController::class);
     Route::resource('leads', LeadController::class);
-    Route::resource('contacts', App\Http\Controllers\ContactController::class)->only(['index', 'show', 'destroy']);
+    
     // Menggunakan name 'settings.index' agar sesuai dengan menu di layout dashboard
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
 
