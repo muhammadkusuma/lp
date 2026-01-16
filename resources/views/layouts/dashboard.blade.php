@@ -81,6 +81,7 @@
 
         {{-- SDM --}}
         <a href="{{ route('employees.index') }}" class="menu-item">Karyawan</a>
+        <a href="{{ route('salary-slips.index') }}" class="menu-item">Slip Gaji</a>
 
         {{-- USER --}}
         <a href="{{ route('users.index') }}" class="menu-item">Pengguna</a>
@@ -94,6 +95,7 @@
         {{-- FINANCE --}}
         <a href="{{ route('invoices.index') }}" class="menu-item">Invoice</a>
         <a href="{{ route('payments.index') }}" class="menu-item">Pembayaran</a>
+        <a href="{{ route('expenses.index') }}" class="menu-item">Pengeluaran</a>
         <a href="{{ route('reports.finance') }}" class="menu-item">Laporan Keuangan</a>
 
         {{-- LEAD --}}

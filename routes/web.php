@@ -105,6 +105,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('payments', PaymentController::class);
     Route::get('/reports/finance', [ReportController::class, 'finance'])->name('reports.finance');
     Route::resource('leads', LeadController::class);
+    Route::resource('expenses', \App\Http\Controllers\ExpenseController::class);
+    Route::resource('salary-slips', \App\Http\Controllers\SalarySlipController::class);
     
     // Menggunakan name 'settings.index' agar sesuai dengan menu di layout dashboard
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
