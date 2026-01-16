@@ -48,9 +48,9 @@
                     <p class="text-gray-500 font-mono text-lg">#{{ $invoice->invoice_number }}</p>
                 </div>
                 <div class="text-right">
-                    <h3 class="font-bold text-xl text-gray-800">PT SOFTWARE HOUSE</h3>
-                    <p class="text-sm text-gray-600">Jalan Teknologi No. 123</p>
-                    <p class="text-sm text-gray-600">Jakarta, Indonesia</p>
+                    <h3 class="font-bold text-xl text-gray-800">{{ $appSettings['site_name'] ?? 'PT Maju Bersama Teknologi' }}</h3>
+                    <p class="text-sm text-gray-600">{{ $appSettings['address'] ?? 'Alamat tidak tersedia' }}</p>
+                    <p class="text-sm text-gray-600">{{ $appSettings['contact_phone'] ?? '' }}</p>
                 </div>
             </div>
 
@@ -114,7 +114,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="3" class="border border-gray-300 p-2 text-right font-bold text-gray-600">Pajak</td>
+                            <td colspan="3" class="border border-gray-300 p-2 text-right font-bold text-gray-600">
+                                Pajak {{ $invoice->tax_rate > 0 ? '(' . ($invoice->tax_rate == floor($invoice->tax_rate) ? number_format($invoice->tax_rate, 0) : $invoice->tax_rate) . '%)' : '' }}
+                            </td>
                             <td class="border border-gray-300 p-2 text-right font-mono text-red-600">
                                 {{ number_format($invoice->tax, 0, ',', '.') }}
                             </td>
@@ -129,12 +131,11 @@
                 </table>
             </div>
 
-            {{-- Footer Info --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t pt-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t pt-6">
                 <div class="text-sm text-gray-600">
                     <p class="font-bold text-gray-800 mb-1">🏦 Info Pembayaran:</p>
                     <p>Bank BCA: <span class="font-mono font-bold">123-456-7890</span></p>
-                    <p>A.n: PT Software House</p>
+                    <p>A.n: {{ $appSettings['site_name'] ?? 'PT Maju Bersama Teknologi' }}</p>
                     <p class="mt-2 italic">* Mohon sertakan nomor invoice <strong>{{ $invoice->invoice_number }}</strong> pada berita transfer.</p>
                 </div>
                 <div class="text-center md:text-right flex flex-col items-end justify-end">

@@ -49,8 +49,10 @@ class InvoiceController extends Controller
             foreach ($request->items as $item) {
                 $subtotal += $item['qty'] * $item['price'];
             }
-            // Tax bisa diimplementasikan dinamis, disini kita ambil input atau default 0
-            $tax   = $request->input('tax', 0);
+            
+            // Tax calculated from percentage
+            $taxRate = $request->input('tax_rate', 0);
+            $tax = $subtotal * ($taxRate / 100);
             $total = $subtotal + $tax;
 
             $invoice = Invoice::create([
@@ -60,6 +62,7 @@ class InvoiceController extends Controller
                 'issue_date'     => $request->issue_date,
                 'due_date'       => $request->due_date,
                 'subtotal'       => $subtotal,
+                'tax_rate'       => $taxRate,
                 'tax'            => $tax,
                 'total'          => $total,
                 'status'         => $request->status,
@@ -106,6 +109,7 @@ class InvoiceController extends Controller
             'items.*.description' => 'required|string',
             'items.*.qty'         => 'required|integer|min:1',
             'items.*.price'       => 'required|numeric|min:0',
+            'tax_rate'            => 'nullable|numeric|min:0|max:100',
         ]);
 
         DB::transaction(function () use ($request, $invoice) {
@@ -113,7 +117,9 @@ class InvoiceController extends Controller
             foreach ($request->items as $item) {
                 $subtotal += $item['qty'] * $item['price'];
             }
-            $tax   = $request->input('tax', 0);
+            
+            $taxRate = $request->input('tax_rate', 0);
+            $tax = $subtotal * ($taxRate / 100);
             $total = $subtotal + $tax;
 
             $invoice->update([
@@ -123,6 +129,7 @@ class InvoiceController extends Controller
                 'issue_date'     => $request->issue_date,
                 'due_date'       => $request->due_date,
                 'subtotal'       => $subtotal,
+                'tax_rate'       => $taxRate,
                 'tax'            => $tax,
                 'total'          => $total,
                 'status'         => $request->status,

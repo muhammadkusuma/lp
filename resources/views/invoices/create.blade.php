@@ -123,12 +123,13 @@
                             <td class="border bg-white"></td>
                         </tr>
                         <tr>
-                            <td colspan="3" class="border px-2 py-1 text-right font-bold text-blue-900">Pajak (Rp)</td>
+                            <td colspan="2" class="border px-2 py-1 text-right font-bold text-blue-900">Pajak (%)</td>
                             <td class="border px-2 py-1">
-                                <input type="number" name="tax"
+                                <input type="number" name="tax_rate" id="taxRate"
                                     class="w-full text-right border px-2 py-1 focus:outline-none focus:border-blue-500"
-                                    value="0" oninput="calculateGrandTotal()">
+                                    min="0" max="100" step="0.5" value="0" oninput="calculateGrandTotal()">
                             </td>
+                            <td class="border px-2 py-1 text-right text-red-600 font-mono" id="taxAmount">0</td>
                             <td class="border bg-white"></td>
                         </tr>
                     </tfoot>
@@ -199,6 +200,8 @@
             calculateGrandTotal();
         }
 
+
+
         function calculateGrandTotal() {
             let subtotal = 0;
             document.querySelectorAll('.item-row').forEach(row => {
@@ -207,7 +210,12 @@
                 subtotal += (qty * price);
             });
 
-            document.getElementById('grandTotal').innerText = subtotal.toLocaleString('id-ID');
+            const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+            const taxAmount = subtotal * (taxRate / 100);
+            const total = subtotal + taxAmount;
+
+            document.getElementById('taxAmount').innerText = taxAmount.toLocaleString('id-ID');
+            document.getElementById('grandTotal').innerText = total.toLocaleString('id-ID');
         }
     </script>
 @endsection

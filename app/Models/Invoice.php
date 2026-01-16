@@ -9,7 +9,7 @@ class Invoice extends Model
 {
     protected $fillable = [
         'invoice_number','client_id','project_id',
-        'issue_date','due_date','subtotal','tax','total','status'
+        'issue_date','due_date','subtotal','tax','tax_rate','total','status'
     ];
 
     protected $keyType = 'string';
