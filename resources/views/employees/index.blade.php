@@ -3,12 +3,9 @@
 @section('title', 'Manajemen Karyawan')
 
 @section('content')
-<div class="mb-4">
-    <h2 class="text-2xl font-bold text-blue-900">📋 Manajemen Karyawan & SDM</h2>
-    <p class="text-sm text-gray-600 mt-2">
-        <strong>Penjelasan:</strong> Halaman ini digunakan untuk mengelola data karyawan, freelancer, dan pemilik perusahaan.
-        Anda dapat menambah, mengedit, dan menghapus data karyawan. Sistem akan otomatis memberikan reminder jika kontrak karyawan akan segera berakhir.
-    </p>
+<div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+    <h4 class="font-bold mb-1">ℹ️ Manajemen Karyawan & SDM</h4>
+    <p>Halaman ini digunakan untuk mengelola data karyawan, freelancer, dan pemilik perusahaan. Sistem akan otomatis memberikan reminder jika kontrak karyawan akan segera berakhir.</p>
 </div>
 
 <div class="flex justify-between items-center mb-4">

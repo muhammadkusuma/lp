@@ -9,6 +9,12 @@
             <a href="{{ route('projects.index') }}" class="text-sm text-blue-700 underline">← Kembali</a>
         </div>
 
+        {{-- Info Box --}}
+        <div class="bg-yellow-50 border border-yellow-200 text-yellow-900 px-4 py-3 mb-4 text-sm">
+            <p class="font-bold mb-1">⚠️ Edit Data Project</p>
+            <p>Anda sedang mengubah detail project. Perubahan status atau nilai project akan tersimpan setelah klik Update.</p>
+        </div>
+
         <form action="{{ route('projects.update', $project->id) }}" method="POST" class="bg-white p-4 win-border">
             @csrf
             @method('PUT')

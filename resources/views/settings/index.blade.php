@@ -3,8 +3,10 @@
 @section('title', 'General Settings')
 
 @section('content')
-    <div class="flex justify-between items-center mb-4">
-        <h2 class="font-bold text-blue-900 text-xl">⚙️ Pengaturan Aplikasi</h2>
+    {{-- Info Box --}}
+    <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+        <h4 class="font-bold mb-1">ℹ️ Konfigurasi Umum</h4>
+        <p>Sesuaikan identitas dan informasi kontak perusahaan yang akan ditampilkan pada dokumen resmi (Invoice, Surat, dll) dan footer website.</p>
     </div>
 
     <form action="{{ route('settings.update') }}" method="POST" enctype="multipart/form-data" class="bg-white p-6 win-border">

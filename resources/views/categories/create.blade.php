@@ -8,6 +8,12 @@
         <a href="{{ route('categories.index') }}" class="text-sm text-blue-700 underline">← Kembali</a>
     </div>
 
+    {{-- Info Box --}}
+    <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+        <p class="font-bold mb-1">ℹ️ Buat Kategori</p>
+        <p>Tambahkan nama kategori baru yang ringkas dan jelas. Contoh: "Berita", "Tutorial", "Pengumuman".</p>
+    </div>
+
     <div class="bg-white p-6 win-border max-w-2xl">
         <form action="{{ route('categories.store') }}" method="POST">
             @csrf

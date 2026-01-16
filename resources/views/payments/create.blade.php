@@ -14,6 +14,12 @@
             </a>
         </div>
 
+        {{-- Info Box --}}
+        <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+            <p class="font-bold mb-1">ℹ️ Input Pembayaran</p>
+            <p>Catat pembayaran yang diterima untuk Invoice tertentu. Sistem akan otomatis memberbarui sisa tagihan pada Invoice terkait.</p>
+        </div>
+
         {{-- Form Container --}}
         <div class="bg-white p-5 win-border">
             <form action="{{ route('payments.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">

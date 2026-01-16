@@ -3,8 +3,16 @@
 @section('title', 'Pesan Kontak')
 
 @section('content')
+    {{-- Info Box --}}
+    <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+        <h4 class="font-bold mb-1">ℹ️ Kotak Masuk</h4>
+        <p>Daftar pesan yang dikirim oleh pengunjung melalui formulir kontak di landing page website utama.</p>
+    </div>
+
     <div class="flex items-center justify-between mb-4">
-        <h2 class="font-bold text-blue-900 text-lg">📧 Pesan Kontak dari Landing Page</h2>
+        <div class="flex gap-2">
+            {{-- Search / Filter Placeholder --}}
+        </div>
     </div>
 
     @if (session('success'))

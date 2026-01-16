@@ -9,6 +9,12 @@
             <h2 class="font-bold text-blue-900">⚖️ Tambah Dokumen Legal</h2>
         </div>
 
+        {{-- Info Box --}}
+        <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+            <p class="font-bold mb-1">ℹ️ Input Legalitas</p>
+            <p>Masukkan tanggal kadaluarsa dengan benar agar fitur Reminder dapat berfungsi.</p>
+        </div>
+
         <div class="win-border bg-white p-4 overflow-auto">
             <form action="{{ route('legal-documents.store') }}" method="POST" enctype="multipart/form-data" id="legalDocForm">
                 @csrf

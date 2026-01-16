@@ -5,9 +5,17 @@
 @section('content')
     <div class="h-full flex flex-col">
 
-        {{-- Header Section --}}
-        <div class="flex items-center justify-between mb-3">
-            <h2 class="font-bold text-blue-900">💰 Manajemen Pembayaran</h2>
+        {{-- Info Box --}}
+        <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+            <h4 class="font-bold mb-1">ℹ️ Riwayat Transaksi</h4>
+            <p>Pantau semua pembayaran yang diterima dari klien. Pastikan semua transaksi tercatat dengan bukti pembayaran yang valid.</p>
+        </div>
+
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex gap-2">
+                {{-- Search / Filter Placeholder --}}
+            </div>
+
             <a href="{{ route('payments.create') }}"
                 class="bg-green-700 text-white px-3 py-1 win-border hover:bg-green-600 text-sm">
                 ➕ Catat Pembayaran

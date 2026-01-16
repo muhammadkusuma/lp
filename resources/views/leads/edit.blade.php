@@ -7,6 +7,12 @@
         <div class="win-border bg-white p-4">
             <h2 class="font-bold text-blue-900 mb-4 border-b pb-2">✏️ Edit Lead</h2>
 
+            {{-- Info Box --}}
+            <div class="bg-yellow-50 border border-yellow-200 text-yellow-900 px-4 py-3 mb-4 text-sm">
+                <p class="font-bold mb-1">⚠️ Update Lead</p>
+                <p>Perbarui status atau informasi calon pelanggan di sini.</p>
+            </div>
+
             <form action="{{ route('leads.update', $lead) }}" method="POST">
                 @csrf
                 @method('PUT')

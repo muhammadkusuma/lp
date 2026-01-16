@@ -7,6 +7,12 @@
 
         <h2 class="font-bold text-blue-900 mb-3">✏️ Edit Service</h2>
 
+        {{-- Info Box --}}
+        <div class="bg-yellow-50 border border-yellow-200 text-yellow-900 px-4 py-3 mb-4 text-sm">
+            <p class="font-bold mb-1">⚠️ Edit Layanan</p>
+            <p>Anda sedang mengubah informasi layanan. Perubahan akan mempengaruhi tampilan data layanan di masa depan.</p>
+        </div>
+
         <form method="POST" action="{{ route('services.update', $service) }}" class="grid grid-cols-2 gap-4 text-sm">
             @csrf
             @method('PUT')

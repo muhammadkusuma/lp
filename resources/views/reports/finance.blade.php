@@ -4,10 +4,16 @@
 
 @section('content')
 
-    <div class="flex justify-between items-center mb-4">
-        <h2 class="font-bold text-blue-900 text-xl">📈 Laporan Keuangan</h2>
-        <div class="text-xs text-gray-500">
-            Dicetak pada: {{ now()->format('d M Y H:i') }}
+    {{-- Info Box --}}
+    <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-6 text-sm">
+        <div class="flex justify-between items-start">
+            <div>
+                <h4 class="font-bold mb-1">ℹ️ Laporan Keuangan</h4>
+                <p>Ringkasan kinerja keuangan perusahaan Anda. Pantau total pendapatan, tagihan yang belum dibayar, dan nilai total invoice di sini.</p>
+            </div>
+            <div class="text-xs text-gray-500 text-right">
+                Dicetak pada:<br>{{ now()->format('d M Y H:i') }}
+            </div>
         </div>
     </div>
 

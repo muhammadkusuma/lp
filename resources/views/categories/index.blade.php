@@ -3,8 +3,17 @@
 @section('title', 'Kategori Artikel')
 
 @section('content')
+    {{-- Info Box --}}
+    <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+        <h4 class="font-bold mb-1">ℹ️ Pengelompokan Konten</h4>
+        <p>Kelola kategori untuk mengelompokkan artikel atau berita agar memudahkan pembaca dalam mencari konten yang relevan.</p>
+    </div>
+
     <div class="flex items-center justify-between mb-4">
-        <h2 class="font-bold text-blue-900 text-lg">🏷️ Kategori Artikel</h2>
+        <div class="flex gap-2">
+            {{-- Search / Filter Placeholder --}}
+        </div>
+
         <a href="{{ route('categories.create') }}" class="bg-blue-700 text-white px-4 py-2 win-border hover:bg-blue-600">
             + Tambah Kategori
         </a>

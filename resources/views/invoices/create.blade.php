@@ -10,6 +10,16 @@
             <a href="{{ route('invoices.index') }}" class="text-sm text-blue-700 underline">← Kembali</a>
         </div>
 
+        {{-- Info Box --}}
+        <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+            <p class="font-bold mb-1">ℹ️ Petunjuk Pembuatan:</p>
+            <ul class="list-disc list-inside">
+                <li>Lengkapi formulir di bawah ini dengan data yang sesuai. Field bertanda (<span class="text-red-500">*</span>) wajib diisi.</li>
+                <li>Pilih <strong>Client</strong> dan <strong>Project</strong> yang sudah terdaftar.</li>
+                <li>Di bagian bawah, tambahkan rincian barang/jasa satu per satu di tabel <strong>Item Invoice</strong>.</li>
+            </ul>
+        </div>
+
         <form action="{{ route('invoices.store') }}" method="POST" id="invoiceForm" class="bg-white p-4 win-border">
             @csrf
 

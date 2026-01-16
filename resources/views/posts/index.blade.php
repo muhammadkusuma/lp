@@ -3,8 +3,17 @@
 @section('title', 'Artikel / Blog')
 
 @section('content')
+    {{-- Info Box --}}
+    <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+        <h4 class="font-bold mb-1">ℹ️ Manajemen Konten</h4>
+        <p>Buat dan kelola artikel berita atau blog untuk website Anda. Anda dapat menyimpan sebagai draft atau langsung mempublikasikannya.</p>
+    </div>
+
     <div class="flex items-center justify-between mb-4">
-        <h2 class="font-bold text-blue-900 text-lg">📝 Artikel / Blog</h2>
+        <div class="flex gap-2">
+            {{-- Search / Filter Placeholder --}}
+        </div>
+
         <a href="{{ route('posts.create') }}" class="bg-blue-700 text-white px-4 py-2 win-border hover:bg-blue-600">
             + Tambah Artikel
         </a>

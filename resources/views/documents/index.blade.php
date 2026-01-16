@@ -5,13 +5,21 @@
 @section('content')
     <div class="h-full flex flex-col">
 
-        <div class="flex items-center justify-between mb-3">
-            <h2 class="font-bold text-blue-900">📄 Manajemen Dokumen Masuk & Keluar</h2>
+    {{-- Info Box --}}
+    <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+        <h4 class="font-bold mb-1">ℹ️ Arsip Dokumen</h4>
+        <p>Kelola surat masuk, surat keluar, dan dokumen penting lainnya di sini. Gunakan filter pencarian untuk menemukan dokumen dengan cepat.</p>
+    </div>
 
-            <a href="{{ route('documents.create') }}" class="bg-green-700 text-white px-3 py-1 win-border">
-                ➕ Tambah Dokumen
-            </a>
+    <div class="flex items-center justify-between mb-4">
+        <div class="flex gap-2">
+            {{-- Search / Filter Placeholder (Filters are below) --}}
         </div>
+
+        <a href="{{ route('documents.create') }}" class="bg-green-700 text-white px-3 py-1 win-border">
+            ➕ Tambah Dokumen
+        </a>
+    </div>
 
         {{-- Advanced Search/Filter --}}
         <div class="mb-3 p-3 bg-gray-100 win-border">

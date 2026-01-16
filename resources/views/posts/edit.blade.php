@@ -8,6 +8,12 @@
         <a href="{{ route('posts.index') }}" class="text-sm text-blue-700 underline">← Kembali</a>
     </div>
 
+    {{-- Info Box --}}
+    <div class="bg-yellow-50 border border-yellow-200 text-yellow-900 px-4 py-3 mb-4 text-sm">
+        <p class="font-bold mb-1">⚠️ Revisi Artikel</p>
+        <p>Perbarui konten artikel Anda. Perubahan akan langsung terlihat di website jika statusnya "Published".</p>
+    </div>
+
     <div class="bg-white p-6 win-border">
         <form action="{{ route('posts.update', $post) }}" method="POST">
             @csrf

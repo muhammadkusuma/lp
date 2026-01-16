@@ -5,78 +5,80 @@
 @section('content')
     <div class="h-full flex flex-col">
 
-        <div class="flex items-center justify-between mb-3">
-            <h2 class="font-bold text-blue-900">⚖️ Manajemen Dokumen Legal & Kepatuhan</h2>
+    {{-- Info Box --}}
+    <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+        <h4 class="font-bold mb-1">ℹ️ Dokumen Legalitas</h4>
+        <p>Pantau masa berlaku dokumen penting perusahaan seperti SIUP, TDP, Akta, dll. Sistem akan memberikan notifikasi jika dokumen mendekati kadaluarsa.</p>
+    </div>
 
-            <a href="{{ route('legal-documents.create') }}" class="bg-green-700 text-white px-3 py-1 win-border">
-                ➕ Tambah Dokumen
-            </a>
+    {{-- Alert Section --}}
+    @if($expiredCount > 0 || $expiringCount > 0)
+        <div class="mb-4">
+            @if($expiredCount > 0)
+                <div class="p-3 bg-red-100 border-2 border-red-500 mb-2">
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-2">⚠️</span>
+                        <div>
+                            <strong class="text-red-900">PERHATIAN!</strong>
+                            <span class="text-red-800">Ada {{ $expiredCount }} dokumen yang sudah kadaluarsa dan perlu diperpanjang segera!</span>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            @if($expiringCount > 0)
+                <div class="p-3 bg-yellow-100 border-2 border-yellow-500">
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-2">⏰</span>
+                        <div>
+                            <strong class="text-yellow-900">REMINDER:</strong>
+                            <span class="text-yellow-800">Ada {{ $expiringCount }} dokumen yang akan segera kadaluarsa. Segera rencanakan perpanjangan!</span>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
+    @endif
 
-        {{-- Alert Section --}}
-        @if($expiredCount > 0 || $expiringCount > 0)
-            <div class="mb-3">
-                @if($expiredCount > 0)
-                    <div class="p-3 bg-red-100 border-2 border-red-500 mb-2">
-                        <div class="flex items-center">
-                            <span class="text-2xl mr-2">⚠️</span>
-                            <div>
-                                <strong class="text-red-900">PERHATIAN!</strong>
-                                <span class="text-red-800">Ada {{ $expiredCount }} dokumen yang sudah kadaluarsa dan perlu diperpanjang segera!</span>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-
-                @if($expiringCount > 0)
-                    <div class="p-3 bg-yellow-100 border-2 border-yellow-500">
-                        <div class="flex items-center">
-                            <span class="text-2xl mr-2">⏰</span>
-                            <div>
-                                <strong class="text-yellow-900">REMINDER:</strong>
-                                <span class="text-yellow-800">Ada {{ $expiringCount }} dokumen yang akan segera kadaluarsa. Segera rencanakan perpanjangan!</span>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-            </div>
-        @endif
-
+    <div class="flex items-end justify-between mb-4">
         {{-- Filters --}}
-        <div class="mb-3 p-2 bg-gray-100 win-border">
-            <form method="GET" action="{{ route('legal-documents.index') }}" class="flex gap-2 items-end">
-                <div>
-                    <label class="block text-xs font-bold mb-1">Jenis Dokumen</label>
-                    <select name="document_type" class="border-2 border-gray-400 px-2 py-1 text-sm">
-                        <option value="">Semua</option>
-                        <option value="akta_pendirian" {{ request('document_type') == 'akta_pendirian' ? 'selected' : '' }}>Akta Pendirian</option>
-                        <option value="sk_kemenkumham" {{ request('document_type') == 'sk_kemenkumham' ? 'selected' : '' }}>SK Kemenkumham</option>
-                        <option value="npwp" {{ request('document_type') == 'npwp' ? 'selected' : '' }}>NPWP</option>
-                        <option value="nib" {{ request('document_type') == 'nib' ? 'selected' : '' }}>NIB</option>
-                        <option value="siup" {{ request('document_type') == 'siup' ? 'selected' : '' }}>SIUP</option>
-                        <option value="tdp" {{ request('document_type') == 'tdp' ? 'selected' : '' }}>TDP</option>
-                        <option value="other" {{ request('document_type') == 'other' ? 'selected' : '' }}>Lainnya</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs font-bold mb-1">Status</label>
-                    <select name="status" class="border-2 border-gray-400 px-2 py-1 text-sm">
-                        <option value="">Semua</option>
-                        <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Aktif</option>
-                        <option value="pending_renewal" {{ request('status') == 'pending_renewal' ? 'selected' : '' }}>Perlu Diperpanjang</option>
-                        <option value="expired" {{ request('status') == 'expired' ? 'selected' : '' }}>Kadaluarsa</option>
-                    </select>
-                </div>
-                <button type="submit" class="bg-blue-700 text-white px-3 py-1 win-border text-sm">
-                    🔍 Filter
-                </button>
-                @if(request('document_type') || request('status'))
-                    <a href="{{ route('legal-documents.index') }}" class="bg-gray-400 text-white px-3 py-1 win-border text-sm">
-                        ❌ Reset
-                    </a>
-                @endif
-            </form>
-        </div>
+        <form method="GET" action="{{ route('legal-documents.index') }}" class="flex gap-2 items-end">
+            <div>
+                <label class="block text-xs font-bold mb-1">Jenis Dokumen</label>
+                <select name="document_type" class="border-2 border-gray-400 px-2 py-1 text-sm bg-white">
+                    <option value="">Semua Jenis</option>
+                    <option value="akta_pendirian" {{ request('document_type') == 'akta_pendirian' ? 'selected' : '' }}>Akta Pendirian</option>
+                    <option value="sk_kemenkumham" {{ request('document_type') == 'sk_kemenkumham' ? 'selected' : '' }}>SK Kemenkumham</option>
+                    <option value="npwp" {{ request('document_type') == 'npwp' ? 'selected' : '' }}>NPWP</option>
+                    <option value="nib" {{ request('document_type') == 'nib' ? 'selected' : '' }}>NIB</option>
+                    <option value="siup" {{ request('document_type') == 'siup' ? 'selected' : '' }}>SIUP</option>
+                    <option value="tdp" {{ request('document_type') == 'tdp' ? 'selected' : '' }}>TDP</option>
+                    <option value="other" {{ request('document_type') == 'other' ? 'selected' : '' }}>Lainnya</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-xs font-bold mb-1">Status</label>
+                <select name="status" class="border-2 border-gray-400 px-2 py-1 text-sm bg-white">
+                    <option value="">Semua Status</option>
+                    <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Aktif</option>
+                    <option value="pending_renewal" {{ request('status') == 'pending_renewal' ? 'selected' : '' }}>Perlu Diperpanjang</option>
+                    <option value="expired" {{ request('status') == 'expired' ? 'selected' : '' }}>Kadaluarsa</option>
+                </select>
+            </div>
+            <button type="submit" class="bg-blue-700 text-white px-3 py-1 win-border text-sm mb-[2px]">
+                🔍 Filter
+            </button>
+            @if(request('document_type') || request('status'))
+                <a href="{{ route('legal-documents.index') }}" class="bg-gray-400 text-white px-3 py-1 win-border text-sm mb-[2px]">
+                    ❌ Reset
+                </a>
+            @endif
+        </form>
+
+        <a href="{{ route('legal-documents.create') }}" class="bg-green-700 text-white px-3 py-1 win-border mb-[2px]">
+            ➕ Tambah Dokumen
+        </a>
+    </div>
 
         <div class="flex-1 overflow-auto win-border bg-white">
             <table class="w-full text-sm border-collapse">

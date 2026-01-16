@@ -9,6 +9,12 @@
             <h2 class="font-bold text-blue-900">📄 Edit Dokumen</h2>
         </div>
 
+        {{-- Info Box --}}
+        <div class="bg-yellow-50 border border-yellow-200 text-yellow-900 px-4 py-3 mb-4 text-sm">
+            <p class="font-bold mb-1">⚠️ Edit Arsip</p>
+            <p>Nomor dokumen tidak dapat diubah untuk menjaga integritas data arsip.</p>
+        </div>
+
         <div class="win-border bg-white p-4 overflow-auto">
             <form action="{{ route('documents.update', $document) }}" method="POST" enctype="multipart/form-data">
                 @csrf

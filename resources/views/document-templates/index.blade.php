@@ -5,10 +5,18 @@
 @section('content')
     <div class="h-full flex flex-col">
 
-        <div class="flex items-center justify-between mb-3">
-            <h2 class="font-bold text-blue-900">📄 Template Dokumen</h2>
+        {{-- Info Box --}}
+        <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+            <h4 class="font-bold mb-1">ℹ️ Bank Template</h4>
+            <p>Simpan template standar perusahaan (kop surat, format kontrak, memo) agar mudah diakses oleh seluruh tim.</p>
+        </div>
 
-            <a href="{{ route('document-templates.create') }}" class="bg-green-700 text-white px-3 py-1 win-border">
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex gap-2">
+                {{-- Search / Filter Placeholder --}}
+            </div>
+
+            <a href="{{ route('document-templates.create') }}" class="bg-green-700 text-white px-3 py-1 win-border hover:bg-green-600">
                 ➕ Tambah Template
             </a>
         </div>

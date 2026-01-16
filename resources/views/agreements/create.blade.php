@@ -9,6 +9,12 @@
             <h2 class="font-bold text-blue-900">📋 Tambah Perjanjian Baru</h2>
         </div>
 
+        {{-- Info Box --}}
+        <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+            <p class="font-bold mb-1">ℹ️ Upload Perjanjian</p>
+            <p>Pastikan Anda mengupload dokumen yang valid. Dokumen ini akan disimpan sebagai Versi 1.</p>
+        </div>
+
         <div class="win-border bg-white p-4 overflow-auto">
             <form action="{{ route('agreements.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf

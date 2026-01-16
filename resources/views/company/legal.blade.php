@@ -5,12 +5,10 @@
 @section('content')
     <div class="h-full flex flex-col">
 
-        {{-- Header --}}
-        <div class="mb-3">
-            <h2 class="font-bold text-blue-900">📜 Company Legal</h2>
-            <p class="text-xs text-gray-600">
-                Informasi legalitas & dokumen perusahaan
-            </p>
+        {{-- Info Box --}}
+        <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+            <h4 class="font-bold mb-1">ℹ️ Data Legalitas</h4>
+            <p>Penyimpanan data NPWP, NIB, dan Akta Pendirian untuk keperluan administrasi dan validasi dokumen hukum perusahaan.</p>
         </div>
 
         <form method="POST" action="{{ route('company.legal.update') }}" class="flex-1 flex flex-col">

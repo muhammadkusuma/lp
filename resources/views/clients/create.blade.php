@@ -7,6 +7,12 @@
 
         <h2 class="font-bold text-blue-900 mb-3">➕ Tambah Client</h2>
 
+        {{-- Info Box --}}
+        <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+            <p class="font-bold mb-1">ℹ️ Tambah Client Baru</p>
+            <p>Silakan lengkapi biodata client di bawah ini untuk disimpan ke database.</p>
+        </div>
+
         <form method="POST" action="{{ route('clients.store') }}" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             @csrf
 

@@ -5,10 +5,12 @@
 @section('content')
 <div class="mb-4">
     <h2 class="text-2xl font-bold text-blue-900">✏️ Edit Data Karyawan</h2>
-    <p class="text-sm text-gray-600 mt-2">
-        <strong>Penjelasan:</strong> Perbarui data karyawan <strong>{{ $employee->full_name }}</strong>.
-        Pastikan semua data yang bertanda (*) wajib diisi dengan benar.
-    </p>
+</div>
+
+{{-- Info Box --}}
+<div class="bg-yellow-50 border border-yellow-200 text-yellow-900 px-4 py-3 mb-4 text-sm">
+    <p class="font-bold mb-1">⚠️ Update Data Karyawan</p>
+    <p>Anda sedang memperbarui data karyawan <strong>{{ $employee->full_name }}</strong>. Pastikan perubahan data valid sebelum disimpan.</p>
 </div>
 
 <form action="{{ route('employees.update', $employee) }}" method="POST" class="space-y-4">

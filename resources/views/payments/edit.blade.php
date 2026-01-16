@@ -9,6 +9,12 @@
             <a href="{{ route('payments.index') }}" class="text-gray-600 hover:underline text-sm">&laquo; Kembali</a>
         </div>
 
+        {{-- Info Box --}}
+        <div class="bg-yellow-50 border border-yellow-200 text-yellow-900 px-4 py-3 mb-4 text-sm">
+            <p class="font-bold mb-1">⚠️ Koreksi Pembayaran</p>
+            <p>Hanya ubah data jika terjadi kesalahan pencatatan. Mengubah jumlah pembayaran akan mempengaruhi kalkulasi sisa tagihan pada Invoice.</p>
+        </div>
+
         <form action="{{ route('payments.update', $payment->id) }}" method="POST" enctype="multipart/form-data"
             class="bg-white p-6 win-border space-y-4">
             @csrf

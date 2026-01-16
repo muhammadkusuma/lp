@@ -5,12 +5,10 @@
 @section('content')
     <div class="h-full flex flex-col">
 
-        {{-- Header --}}
-        <div class="mb-3">
-            <h2 class="font-bold text-blue-900">🏢 Company Profile</h2>
-            <p class="text-xs text-gray-600">
-                Informasi utama perusahaan (landing page, invoice, dokumen legal)
-            </p>
+        {{-- Info Box --}}
+        <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+            <h4 class="font-bold mb-1">ℹ️ Profil Perusahaan</h4>
+            <p>Informasi ini akan ditampilkan pada seluruh dokumen resmi (Invoice, Surat Jalans) yang diterbitkan sistem. Pastikan data selalu valid.</p>
         </div>
 
         {{-- Form --}}

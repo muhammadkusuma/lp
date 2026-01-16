@@ -5,8 +5,23 @@
 @section('content')
     <div class="h-full flex flex-col">
 
-        <div class="flex items-center justify-between mb-3">
-            <h2 class="font-bold text-blue-900">🚀 Projects</h2>
+        {{-- Info Box --}}
+        <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+            <h4 class="font-bold mb-1">ℹ️ Daftar Project</h4>
+            <p class="mb-2">Halaman ini memuat daftar proyek yang dikerjakan untuk Client.</p>
+            <ul class="list-disc list-inside space-y-1 ml-1">
+                <li><span class="font-bold">Planning:</span> Proyek masih dalam tahap rencana.</li>
+                <li><span class="font-bold">Running:</span> Proyek sedang berjalan.</li>
+                <li><span class="font-bold">Done:</span> Proyek telah selesai.</li>
+                <li><span class="font-bold">Cancel:</span> Proyek dibatalkan.</li>
+            </ul>
+        </div>
+
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex gap-2">
+                {{-- Search / Filter Placeholder --}}
+            </div>
+
             <a href="{{ route('projects.create') }}" class="bg-green-700 text-white px-3 py-1 win-border hover:bg-green-600">
                 ➕ Tambah Project
             </a>

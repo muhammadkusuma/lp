@@ -9,6 +9,12 @@
             <h2 class="font-bold text-blue-900">📄 Edit Template Dokumen</h2>
         </div>
 
+        {{-- Info Box --}}
+        <div class="bg-yellow-50 border border-yellow-200 text-yellow-900 px-4 py-3 mb-4 text-sm">
+            <p class="font-bold mb-1">⚠️ Update Template</p>
+            <p>Mengganti file template akan mempengaruhi file yang didownload oleh user di masa depan.</p>
+        </div>
+
         <div class="win-border bg-white p-4">
             <form action="{{ route('document-templates.update', $documentTemplate) }}" method="POST" enctype="multipart/form-data">
                 @csrf

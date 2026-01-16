@@ -5,10 +5,12 @@
 @section('content')
 <div class="mb-4">
     <h2 class="text-2xl font-bold text-blue-900">➕ Tambah Karyawan Baru</h2>
-    <p class="text-sm text-gray-600 mt-2">
-        <strong>Penjelasan:</strong> Isi formulir di bawah ini untuk menambahkan data karyawan baru.
-        Pastikan semua data yang bertanda (*) wajib diisi dengan benar.
-    </p>
+</div>
+
+{{-- Info Box --}}
+<div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+    <p class="font-bold mb-1">ℹ️ Input Data Karyawan</p>
+    <p>Isi formulir di bawah ini untuk menambahkan data karyawan baru. Pastikan semua data yang bertanda (*) wajib diisi dengan benar.</p>
 </div>
 
 <form action="{{ route('employees.store') }}" method="POST" class="space-y-4">

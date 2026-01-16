@@ -6,8 +6,23 @@
     <div class="h-full flex flex-col">
 
         {{-- Header Section --}}
-        <div class="flex items-center justify-between mb-3">
-            <h2 class="font-bold text-blue-900">🧾 Invoices</h2>
+        {{-- Info Box --}}
+        <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+            <h4 class="font-bold mb-1">ℹ️ Panduan Invoice</h4>
+            <p class="mb-2">Halaman ini menampilkan seluruh daftar invoice yang telah dibuat untuk Client.</p>
+            <ul class="list-disc list-inside space-y-1 ml-1">
+                <li><span class="font-bold">Status Draft (Abu-abu):</span> Invoice baru dibuat, belum dikirim.</li>
+                <li><span class="font-bold">Status Sent (Biru):</span> Invoice sudah dikirim ke client.</li>
+                <li><span class="font-bold">Status Paid (Hijau):</span> Pembayaran telah lunas.</li>
+                <li><span class="font-bold">Status Overdue (Merah):</span> Pembayaran terlambat dari tanggal jatuh tempo.</li>
+            </ul>
+        </div>
+
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex gap-2">
+                {{-- Search / Filter Placeholder --}}
+            </div>
+
             <a href="{{ route('invoices.create') }}" class="bg-blue-600 text-white px-3 py-1 win-border hover:bg-blue-500">
                 ➕ Buat Invoice Baru
             </a>

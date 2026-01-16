@@ -11,6 +11,12 @@
             <a href="{{ route('invoices.index') }}" class="text-sm text-blue-700 underline">← Kembali</a>
         </div>
 
+        {{-- Info Box --}}
+        <div class="bg-yellow-50 border border-yellow-200 text-yellow-900 px-4 py-3 mb-4 text-sm">
+            <p class="font-bold mb-1">⚠️ Mode Edit:</p>
+            <p>Anda sedang mengubah data invoice yang sudah ada. Pastikan perubahan data sudah benar sebelum menyimpan.</p>
+        </div>
+
         <form action="{{ route('invoices.update', $invoice->id) }}" method="POST" class="bg-white p-4 win-border">
             @csrf
             @method('PUT')

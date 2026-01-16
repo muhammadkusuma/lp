@@ -7,6 +7,12 @@
 
         <h2 class="font-bold text-blue-900 mb-3">➕ Tambah Role</h2>
 
+        {{-- Info Box --}}
+        <div class="bg-blue-50 border border-blue-200 text-blue-900 px-4 py-3 mb-4 text-sm">
+            <p class="font-bold mb-1">ℹ️ Role Baru</p>
+            <p>Buat nama role baru (misal: Admin, Manager, Staf).</p>
+        </div>
+
         <form method="POST" action="{{ route('roles.store') }}" class="grid grid-cols-1 gap-4 text-sm">
             @csrf
 
